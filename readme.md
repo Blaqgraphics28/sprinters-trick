@@ -1,8 +1,8 @@
 ### Tools we Use 🛠️⚙️
 
-Jira: For project management
-Github: This is where our code lives
-Mongodb: database
+- **Jira:** For project management
+- **Github:** This is where our code lives
+- **Mongodb:** database
 
 ### Contribution Guide 💡
 
