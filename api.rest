@@ -1,0 +1,9 @@
+@server = http://127.0.0.1:6080
+
+@api = {{server}}/v1
+
+###
+GET {{server}}
+
+### 
+GET {{api}}
