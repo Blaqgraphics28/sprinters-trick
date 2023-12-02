@@ -4,7 +4,7 @@ import helmet from "helmet";
 import appConfig from ".";
 
 import { connectMongoDb } from "./persistence/database";
-import { handleResponse } from "../utils/helpers";
+import { handleResponse } from "../utils/response";
 import v1Routers from "../components/v1/v1Routes";
 import suscribe from "../routes/getInTouchRoute"; //routes imported
 
@@ -65,7 +65,7 @@ const initializeMiddlewares = () => {
 const initializeRoutes = () => {
   app.use("/v1", v1Routers);
   // this is the routes that send the user details and their message
-  app.use('/v2', suscribe)
+  app.use("/v2", suscribe);
   app.get("/", (_req, res) => {
     res.json({ message: "Up and running in " + appConfig.environment });
   });

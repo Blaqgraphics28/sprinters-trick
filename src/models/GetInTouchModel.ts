@@ -7,6 +7,7 @@ interface UserInterface extends Document {
   email: string;
   phoneNumber: string;
   userMessage?: string;
+  
 }
 
 // Defining the User Profil Schema
