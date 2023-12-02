@@ -7,3 +7,15 @@ GET {{server}}
 
 ### 
 GET {{api}}
+
+### getIntouch
+POST {{api}}/users/get-in-touch
+Content-Type: application/json
+
+{
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "poppkny@email.com",
+    "phoneNo": "+440711123456",
+    "message": "Lorem ipseum tfh n"
+}

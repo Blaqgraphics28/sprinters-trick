@@ -1,3 +1,4 @@
-import phone from "phone";
+import phone, { PhoneResult } from "phone";
 
-export const isValidPhoneNo = (phoneNo: string) => phone(phoneNo)
+export const isValidPhoneNo = (phoneNo: string): boolean =>
+  phone(phoneNo).isValid;
