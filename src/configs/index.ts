@@ -4,7 +4,7 @@ import ms from "ms";
 const { env } = process;
 
 const appConfig = {
-  isDev: env.NODE_ENV === "development",
+  isDev: env.NODE_ENV === "",
   mongoDbUri: env.dbUri || "",
   environment: env.NODE_ENV,
   port: Number(env.PORT) || 6080,
