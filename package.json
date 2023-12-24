@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev src/index.ts"
+    "tsc": "tsc",
+    "build": "rm -rf ./dist && tsc ",
+    "dev": "ts-node-dev --transpile-only --respawn --exit-child --clear src/index.ts",
+    "start": "npm run build && node dist/index.js"
   },
   "keywords": [],
   "author": "",
