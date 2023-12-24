@@ -4,7 +4,7 @@ import helmet from "helmet";
 import appConfig from ".";
 
 import { connectMongoDb } from "./persistence/database";
-import { handleResponse } from "../utils/helpers";
+import { handleResponse } from "../utils/response";
 import v1Routers from "../components/v1/v1Routes";
 
 const app: Application = express();
@@ -63,7 +63,6 @@ const initializeMiddlewares = () => {
 
 const initializeRoutes = () => {
   app.use("/v1", v1Routers);
-
   app.get("/", (_req, res) => {
     res.json({ message: "Up and running in " + appConfig.environment });
   });

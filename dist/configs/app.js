@@ -8,7 +8,7 @@ const express_1 = __importDefault(require("express"));
 const helmet_1 = __importDefault(require("helmet"));
 const _1 = __importDefault(require("."));
 const database_1 = require("./persistence/database");
-const helpers_1 = require("../utils/helpers");
+const response_1 = require("../utils/response");
 const v1Routes_1 = __importDefault(require("../components/v1/v1Routes"));
 const app = (0, express_1.default)();
 const initializePersistenceAndSeeding = () => {
@@ -38,7 +38,7 @@ const initializeMiddlewares = () => {
         .use((err, req, res, next) => {
         if (req.method === "OPTIONS") {
             res.header("Access-Control-Allow-Methods", "POST, PUT, PATCH, GET, DELETE");
-            return (0, helpers_1.handleResponse)({
+            return (0, response_1.handleResponse)({
                 res,
                 status: 403,
                 message: "Invalid header method",
@@ -57,7 +57,7 @@ const initializeRoutes = () => {
     app.get("/", (_req, res) => {
         res.json({ message: "Up and running in " + _1.default.environment });
     });
-    app.all("*", (_req, res) => (0, helpers_1.handleResponse)({
+    app.all("*", (_req, res) => (0, response_1.handleResponse)({
         res,
         status: 404,
         message: "You have used an invalid method or hit an invalid route",
