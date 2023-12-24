@@ -64,7 +64,7 @@ const initializeMiddlewares = () => {
 const initializeRoutes = () => {
   app.use("/v1", v1Routers);
   app.get("/", (_req, res) => {
-    res.json({ message: "Up and running in " + appConfig.environment });
+    res.json({ message: "welcome to the Sprinters!" });
   });
 
   app.all("*", (_req, res: Response) =>

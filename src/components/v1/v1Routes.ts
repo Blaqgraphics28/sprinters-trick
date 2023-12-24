@@ -1,6 +1,7 @@
 import { Router, Response } from "express";
 import { handleResponse } from "../../utils/response";
 import userRouter from "./Users/user.routes";
+import appConfig from "src/configs";
 
 const router = Router();
 
@@ -8,7 +9,7 @@ router.use("/users", userRouter);
 router.get("/", (_req, res: Response) => {
   handleResponse({
     res,
-    message: "welcome to the Sprinters!",
+    message: "Up and running in " + appConfig.environment,
   });
 });
 
