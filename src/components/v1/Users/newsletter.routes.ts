@@ -1,8 +1,9 @@
 import { Router } from 'express';
-import { subscribe  } from 'src/controllers/newsletterController';
+import { subscribe  } from './userActions/newsletter';
 
 const router = Router();
 
 router.post('/subscribe', subscribe);
 
-export default router;
+
+export default Router;

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import Newsletter from '../models/newsletter';
+import Newsletter from "../newsletter.model";
 
 export const subscribe = async (req: Request, res: Response): Promise<void> => {
     const { email } = req.body;
