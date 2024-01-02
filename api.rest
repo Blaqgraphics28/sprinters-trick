@@ -15,7 +15,15 @@ Content-Type: application/json
 {
     "firstName": "John",
     "lastName": "Doe",
-    "email": "poppkny@email.com",
-    "phoneNo": "+440711123456",
+    "email": "pokngeh@email.com",
+    "phoneNo": "+2347012893373",
     "message": "Lorem ipseum tfh n"
+}
+
+### subscribe to newsletter
+POST {{api}}/users/subscribe
+Content-Type: application/json
+
+{
+    "email": "amipsts@email.com"
 }

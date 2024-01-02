@@ -10,3 +10,7 @@ export const getIntouchSchema = z.object({
   }),
   message: z.string(),
 });
+
+export const newsletterSchema = z.object({
+  email: z.string().email(),
+});

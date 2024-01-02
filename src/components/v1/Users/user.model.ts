@@ -1,17 +1,8 @@
-import mongoose, { Document } from "mongoose";
+import { model, Schema } from "mongoose";
 import platformConstants from "../../../configs/platformConstants";
+import { IGetIntouch, INewsletter } from "./user.types";
 
-interface IUser extends Document {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phoneNo: string;
-  message: string;
-  role: (typeof platformConstants.userRole)[number]
-}
-
-
-const userSchema = new mongoose.Schema<IUser>(
+const getInTouchSchema = new Schema<IGetIntouch>(
   {
     firstName: {
       type: String,
@@ -34,18 +25,31 @@ const userSchema = new mongoose.Schema<IUser>(
     },
     message: {
       type: String,
-      required: true
+      required: true,
     },
     role: {
-        type: String,
-        default: "visitor",
-        enum: platformConstants.userRole
-    }
+      type: String,
+      default: "visitor",
+      enum: platformConstants.userRole,
+    },
   },
   { timestamps: true }
 );
 
-const UserModel = mongoose.model<IUser>("UserModel", userSchema);
+export const GetIntouchModel = model<IGetIntouch>(
+  "GetIntouch",
+  getInTouchSchema
+);
 
-export default UserModel;
-export { IUser };
+const newsletterSchema = new Schema<INewsletter>({
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+});
+
+export const NewsletterModel = model<INewsletter>(
+  "Newsletter",
+  newsletterSchema
+);
