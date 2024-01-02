@@ -3,7 +3,7 @@ import { IReq } from "../../../../types";
 import { z } from "zod";
 import { getIntouchSchema } from "../user.policies";
 import { handleResponse } from "../../../../utils/response";
-import UserModel from "../user.model";
+import { GetIntouchModel } from "../user.model";
 
 const getInTouch = async (req: IReq, res: Response) => {
   const {
@@ -15,7 +15,7 @@ const getInTouch = async (req: IReq, res: Response) => {
   }: z.infer<typeof getIntouchSchema> = req.body;
 
   try {
-    const user = await new UserModel({
+    const user = await new GetIntouchModel({
       firstName,
       lastName,
       email,
