@@ -61,8 +61,12 @@ const initializeMiddlewares = () => {
     });
 };
 
+import v2Routers from "../components/v1/v1Routes";
+
 const initializeRoutes = () => {
   app.use("/v1", v1Routers);
+  app.use("/v2", v2Routers)
+
   app.get("/", (_req, res) => {
     res.json({ message: "welcome to the Sprinters!" });
   });

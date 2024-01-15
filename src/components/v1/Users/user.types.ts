@@ -12,3 +12,14 @@ export interface IGetIntouch extends Document {
 export interface INewsletter extends Document {
   email: string;
 }
+
+// blog section made by Okikijesu
+
+export interface IBlog extends Document {
+  postImage: String,
+  about: String,
+  topic: String,
+  post: String,
+  authorImage: String,
+  authorName: String
+}
