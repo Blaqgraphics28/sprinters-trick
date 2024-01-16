@@ -1,7 +1,7 @@
 import { Router, Response } from "express";
 import { handleResponse } from "../../utils/response";
 import userRouter from "./Users/user.routes";
-import blogRouter from "./Users/blog.routes";
+import blogRouter from "./Blog/blog.routes";
 import appConfig from "../../configs";
 
 const router = Router();

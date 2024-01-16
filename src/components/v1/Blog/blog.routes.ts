@@ -1,11 +1,11 @@
 import { Router } from "express";
 import policyMiddleware from "../../../appMiddlewares/policy.middlewares";
-import {  blogSchema } from "./user.policies";
+import {  blogSchema } from "../Users/user.policies";
 import { createBlog, 
          getSingleBlog,
          getAllBlogs,
          updateBlog,
-        deleteBlog } from "./userActions/blog";
+        deleteBlog } from "./blogActions/blog";
 const router = Router();
 
 
@@ -18,8 +18,8 @@ policyMiddleware(blogSchema), getSingleBlog
 )
 router.patch("/:blogId", 
 policyMiddleware(blogSchema), updateBlog)
-router.patch("/:blogId", 
-policyMiddleware(blogSchema), updateBlog)
+router.delete("/:blogId", 
+policyMiddleware(blogSchema), deleteBlog)
  
 const blogRouter = router;
 export default blogRouter;

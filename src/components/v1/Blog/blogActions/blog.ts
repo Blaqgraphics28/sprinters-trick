@@ -1,7 +1,7 @@
 import { Response } from "express";
 import { IReq } from "../../../../types";
 import { z } from "zod";
-import { blogSchema } from "../user.policies";
+import { blogSchema } from "../../Users/user.policies";
 import { handleResponse } from "../../../../utils/response";
 import { BlogModel } from "../blog.model";
 

@@ -1,5 +1,5 @@
 import {model, Schema } from "mongoose"
-import { IBlog } from "./user.types";
+import { IBlog } from "../Users/user.types";
 
 const blogSchema = new Schema<IBlog>({
     postImage: {
