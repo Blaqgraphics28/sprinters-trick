@@ -13,11 +13,11 @@ POST {{api}}/users/get-in-touch
 Content-Type: application/json
 
 {
-    "firstName": "John",
-    "lastName": "Doe",
-    "email": "pokngeh@email.com",
-    "phoneNo": "+2347012893373",
-    "message": "Lorem ipseum tfh n"
+    "firstName": "Johnny",
+    "lastName": "Dore",
+    "email": "pokngop@email.com",
+    "phoneNo": "+2347012899073",
+    "message": "Loremmy ipseum tfh n"
 }
 
 ### subscribe to newsletter
@@ -26,4 +26,19 @@ Content-Type: application/json
 
 {
     "email": "amipsts@email.com"
+}
+
+
+#### =========== Blog
+
+POST {{api}}/blog
+Content-Type: application/json
+
+{
+    "postImage": "Aaaa",
+    "about": "Bbbbb",
+    "topic": "eaaa",
+    "post": "opaaaa",
+    "authorImage": "poaa",
+    "authorName": "dfaaaa"
 }
