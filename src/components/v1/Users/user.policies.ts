@@ -14,3 +14,17 @@ export const getIntouchSchema = z.object({
 export const newsletterSchema = z.object({
   email: z.string().email(),
 });
+
+// case study schema
+
+export const caseStudyschema = z.object({
+  topic: z.string(),
+  about: z.string(),
+  postImage: z.string(),
+  projectOverview: z.string(),
+  Oursolution: z.string(),
+  name: z.string(),
+  category: z.string(),
+  projecttimeline: z.string(),
+  services: z.string(),
+});

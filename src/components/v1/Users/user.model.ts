@@ -1,6 +1,6 @@
 import { model, Schema } from "mongoose";
 import platformConstants from "../../../configs/platformConstants";
-import { IGetIntouch, INewsletter } from "./user.types";
+import { IGetIntouch, INewsletter, ICasestudy} from "./user.types";
 
 const getInTouchSchema = new Schema<IGetIntouch>(
   {
@@ -52,4 +52,49 @@ const newsletterSchema = new Schema<INewsletter>({
 export const NewsletterModel = model<INewsletter>(
   "Newsletter",
   newsletterSchema
+);
+
+const caseStudyschema = new Schema<ICasestudy>({
+  topic: {
+    type: String,
+    required: [true, 'a topic is required']
+  },
+  about: {
+    type: String,
+    required: [true, 'please enter what the post is all about']
+  },
+  postImage: {
+    type: String,
+    required: [true, 'an image post is required']
+  },
+  projectOverview: {
+    type: String,
+    required: [true, 'an overview of the project is required']
+  },
+  OurSolution: {
+    type: String,
+    required: [true, 'the solution is required']
+  },
+  name: {
+    type: String,
+    required: [true, 'The client name is required']
+  },
+  category: {
+    type: String,
+    required: [true, 'project category is required']
+  },
+  projecttimeline: {
+    type: String,
+    required: [true, 'The project timeline is required']
+  },
+  services: {
+    type: String,
+    required: [true, 'The services is required']
+  },
+}, {timestamps: true}
+
+);
+export const caseStudyModel = model<ICasestudy>(
+  "casestudy",
+  caseStudyschema
 );

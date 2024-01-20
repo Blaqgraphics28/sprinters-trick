@@ -12,3 +12,17 @@ export interface IGetIntouch extends Document {
 export interface INewsletter extends Document {
   email: string;
 }
+
+// case study section made by alaya
+export interface ICasestudy extends Document {
+  topic: string,
+  about: string,
+  postImage: string,
+  projectOverview: string,
+  OurSolution: string,
+  name: string,
+  category: string,
+  projecttimeline: string,
+  services: string,
+  
+}
