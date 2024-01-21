@@ -26,3 +26,7 @@ export const blogSchema = z.object({
   authorImage: z.string(),
   authorName: z.string()
 })
+
+export const blogImage =  z.object({
+  postImage: z.string()
+});

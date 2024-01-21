@@ -9,33 +9,46 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.updateBlog = void 0;
 const response_1 = require("../../../../utils/response");
-const user_model_1 = require("../user.model");
-const getInTouch = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { firstName, lastName, email, phoneNo, message, } = req.body;
+const blog_model_1 = require("../blog.model");
+const updateBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { blogId } = req.params;
+    const { 
+    // postImage,
+    about, topic, post, authorImage, authorName, } = req.body;
     try {
-        const user = yield new user_model_1.GetIntouchModel({
-            firstName,
-            lastName,
-            email,
-            phoneNo,
-            message,
-        }).save();
-        //TODO: send mail
+        const updatedBlog = yield blog_model_1.BlogModel.findByIdAndUpdate(blogId, {
+            // postImage,
+            about,
+            topic,
+            post,
+            authorImage,
+            authorName,
+        }, { new: true });
+        if (!updatedBlog) {
+            return (0, response_1.handleResponse)({
+                res,
+                status: 404,
+                message: "Blog not found for update",
+            });
+        }
         return (0, response_1.handleResponse)({
             res,
-            message: "message sent successfully",
-            data: user,
+            status: 200,
+            message: "Blog updated successfully",
+            data: updatedBlog,
         });
     }
     catch (err) {
+        console.error(err);
         return (0, response_1.handleResponse)({
             res,
             err,
             status: 500,
-            message: `Internal server error:  ${err.message}`,
+            message: `Internal server error: ${err.message}`,
         });
     }
 });
-exports.default = getInTouch;
-//# sourceMappingURL=getIntouch.js.map
+exports.updateBlog = updateBlog;
+//# sourceMappingURL=update.Blog.js.map

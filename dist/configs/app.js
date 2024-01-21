@@ -55,7 +55,7 @@ const initializeMiddlewares = () => {
 const initializeRoutes = () => {
     app.use("/v1", v1Routes_1.default);
     app.get("/", (_req, res) => {
-        res.json({ message: "Up and running in " + _1.default.environment });
+        res.json({ message: "welcome to the Sprinters!" });
     });
     app.all("*", (_req, res) => (0, response_1.handleResponse)({
         res,

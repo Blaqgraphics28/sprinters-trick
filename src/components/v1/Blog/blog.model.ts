@@ -2,13 +2,14 @@ import {model, Schema } from "mongoose"
 import { IBlog } from "../Users/user.types";
 
 const blogSchema = new Schema<IBlog>({
-    postImage: {
-        type: String,
-        required: [true, 'an image post is required']  
-    },
+    
     about: {
         type: String,
         required: [true, 'please enter what the post is all about']
+    },
+    postImage: {
+        type: String,
+        required: [true, 'an image post is required']  
     },
     topic: {
         type: String,
