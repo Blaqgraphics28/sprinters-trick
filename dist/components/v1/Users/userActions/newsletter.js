@@ -9,33 +9,32 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const response_1 = require("../../../../utils/response");
 const user_model_1 = require("../user.model");
-const getInTouch = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { firstName, lastName, email, phoneNo, message, } = req.body;
+const response_1 = require("../../../../utils/response");
+const subscribeToNewsletter = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { email } = req.body;
     try {
-        const user = yield new user_model_1.GetIntouchModel({
-            firstName,
-            lastName,
-            email,
-            phoneNo,
-            message,
-        }).save();
-        //TODO: send mail
+        const existingEmail = yield user_model_1.NewsletterModel.findOne({ email });
+        if (existingEmail) {
+            return (0, response_1.handleResponse)({
+                res,
+                status: 409,
+                message: "Email already subscribed",
+            });
+        }
+        yield new user_model_1.NewsletterModel({ email }).save();
         return (0, response_1.handleResponse)({
             res,
-            message: "message sent successfully",
-            data: user,
+            message: "successfully",
         });
     }
-    catch (err) {
-        return (0, response_1.handleResponse)({
+    catch (error) {
+        (0, response_1.handleResponse)({
             res,
-            err,
             status: 500,
-            message: `Internal server error:  ${err.message}`,
+            message: "Internal Server Error",
         });
     }
 });
-exports.default = getInTouch;
-//# sourceMappingURL=getIntouch.js.map
+exports.default = subscribeToNewsletter;
+//# sourceMappingURL=newsletter.js.map

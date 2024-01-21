@@ -1,4 +1,6 @@
-@server = http://127.0.0.1:6080
+# @server = http://127.0.0.1:6080
+
+@server = https://sprinters-api.onrender.com
 
 @api = {{server}}/v1
 
@@ -25,5 +27,5 @@ POST {{api}}/users/subscribe
 Content-Type: application/json
 
 {
-    "email": "amipsts@email.com"
+    "email": "amiopsts@email.com"
 }
