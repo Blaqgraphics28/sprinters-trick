@@ -14,18 +14,16 @@ const response_1 = require("../../../../utils/response");
 const blog_model_1 = require("../blog.model");
 const updateBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { blogId } = req.params;
-    const { 
-    // postImage,
-    about, topic, post, authorImage, authorName, } = req.body;
+    const { blogDescription, blogTitle, blogTags, imageUrl, authorImage, authorName, } = req.body;
     try {
         const updatedBlog = yield blog_model_1.BlogModel.findByIdAndUpdate(blogId, {
-            // postImage,
-            about,
-            topic,
-            post,
+            blogDescription,
+            blogTitle,
+            blogTags,
+            imageUrl,
             authorImage,
             authorName,
-        }, { new: true });
+        }, { new: true, runValidators: true });
         if (!updatedBlog) {
             return (0, response_1.handleResponse)({
                 res,

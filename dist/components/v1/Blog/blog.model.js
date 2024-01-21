@@ -3,21 +3,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.BlogModel = void 0;
 const mongoose_1 = require("mongoose");
 const blogSchema = new mongoose_1.Schema({
-    about: {
+    blogDescription: {
         type: String,
-        required: [true, 'please enter what the post is all about']
+        required: [true, 'please enter blog description']
     },
-    postImage: {
+    blogTitle: {
         type: String,
-        required: [true, 'an image post is required']
+        required: [true, 'please enter blog title']
     },
-    topic: {
-        type: String,
-        required: [true, 'a topic is required']
+    blogTags: {
+        type: [String],
+        default: [""]
     },
-    post: {
+    imageUrl: {
         type: String,
-        required: [true, 'post is required']
+        required: [true, 'please provide blog image']
     },
     authorImage: {
         type: String,

@@ -1,7 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.blogImage = exports.blogSchema = exports.newsletterSchema = exports.getIntouchSchema = void 0;
-exports.newsletterSchema = exports.getIntouchSchema = void 0;
 const zod_1 = require("zod");
 const helpers_1 = require("../../../utils/helpers");
 exports.getIntouchSchema = zod_1.z.object({
@@ -18,10 +17,10 @@ exports.newsletterSchema = zod_1.z.object({
 });
 // blog schema created by okikijesu
 exports.blogSchema = zod_1.z.object({
-    postImage: zod_1.z.string(),
-    about: zod_1.z.string(),
-    topic: zod_1.z.string(),
-    post: zod_1.z.string(),
+    blogDescription: zod_1.z.string(),
+    blogTitle: zod_1.z.string(),
+    imageUrl: zod_1.z.string(),
+    blogTags: zod_1.z.array(zod_1.z.string()),
     authorImage: zod_1.z.string(),
     authorName: zod_1.z.string()
 });

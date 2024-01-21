@@ -3,21 +3,21 @@ import { IBlog } from "../Users/user.types";
 
 const blogSchema = new Schema<IBlog>({
     
-    about: {
+    blogDescription: {
         type: String,
-        required: [true, 'please enter what the post is all about']
+        required: [true, 'please enter blog description']
     },
-    postImage: {
+    blogTitle: {
         type: String,
-        required: [true, 'an image post is required']  
+        required: [true, 'please enter blog title']  
     },
-    topic: {
+   blogTags: {
+    type: [String],
+    default: [""]
+   },
+    imageUrl: {
         type: String,
-        required: [true, 'a topic is required']
-    },
-    post: {
-        type: String,
-        required: [true, 'post is required']
+        required: [true, 'please provide blog image']
     },
     authorImage: {
         type: String,

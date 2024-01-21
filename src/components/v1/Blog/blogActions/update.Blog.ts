@@ -11,10 +11,10 @@ export const updateBlog = async (req: IReq, res: Response) => {
   const { blogId } = req.params;
 
   const {
-    // postImage,
-    about,
-    topic,
-    post,
+    blogDescription,
+    blogTitle,
+    blogTags,
+    imageUrl,
     authorImage,
     authorName,
   }: z.infer<typeof blogSchema> = req.body;
@@ -23,14 +23,14 @@ export const updateBlog = async (req: IReq, res: Response) => {
     const updatedBlog = await BlogModel.findByIdAndUpdate(
       blogId,
       {
-        // postImage,
-        about,
-        topic,
-        post,
+        blogDescription,
+        blogTitle,
+        blogTags,
+        imageUrl,
         authorImage,
         authorName,
       },
-      { new: true }
+      { new: true, runValidators: true }
     );
 
     if (!updatedBlog) {

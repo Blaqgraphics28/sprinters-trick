@@ -16,10 +16,10 @@ export interface INewsletter extends Document {
 // blog section made by Okikijesu
 
 export interface IBlog extends Document {
-  postImage: String,
-  about: String,
-  topic: String,
-  post: String,
+  blogDescription: String,
+  blogTitle: String,
+  imageUrl: String,
+  blogTags: String[];
   authorImage: String,
   authorName: String
 }

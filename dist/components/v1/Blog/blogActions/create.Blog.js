@@ -13,13 +13,13 @@ exports.createBlog = void 0;
 const response_1 = require("../../../../utils/response");
 const blog_model_1 = require("../blog.model");
 const createBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { postImage, about, topic, post, authorImage, authorName, } = req.body;
+    const { blogDescription, blogTitle, blogTags, imageUrl, authorImage, authorName, } = req.body;
     try {
         const blog = yield new blog_model_1.BlogModel({
-            postImage,
-            about,
-            topic,
-            post,
+            blogDescription,
+            blogTitle,
+            blogTags,
+            imageUrl,
             authorImage,
             authorName,
         }).save();

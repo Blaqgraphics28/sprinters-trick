@@ -8,20 +8,20 @@ import { BlogModel } from "../blog.model";
 
 export const createBlog = async (req: IReq, res: Response) => {
   const {
-    postImage,
-    about,
-    topic,
-    post,
+    blogDescription,
+    blogTitle,
+    blogTags,
+    imageUrl,
     authorImage,
     authorName,
   }: z.infer<typeof blogSchema> = req.body;
 
   try {
     const blog = await new BlogModel({
-      postImage,
-      about,
-      topic,
-      post,
+      blogDescription,
+      blogTitle,
+      blogTags,
+      imageUrl,
       authorImage,
       authorName,
     }).save();
