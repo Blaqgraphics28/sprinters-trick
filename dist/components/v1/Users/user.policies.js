@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.blogImage = exports.blogSchema = exports.newsletterSchema = exports.getIntouchSchema = void 0;
+exports.newsletterSchema = exports.getIntouchSchema = void 0;
 const zod_1 = require("zod");
 const helpers_1 = require("../../../utils/helpers");
 exports.getIntouchSchema = zod_1.z.object({
