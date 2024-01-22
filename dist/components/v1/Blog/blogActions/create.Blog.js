@@ -9,23 +9,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.createBlog = void 0;
 const response_1 = require("../../../../utils/response");
-const user_model_1 = require("../user.model");
-const getInTouch = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { firstName, lastName, email, phoneNo, message, } = req.body;
+const blog_model_1 = require("../blog.model");
+const createBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { blogDescription, blogTitle, blogTags, imageUrl, authorImage, authorName, } = req.body;
     try {
-        const user = yield new user_model_1.GetIntouchModel({
-            firstName,
-            lastName,
-            email,
-            phoneNo,
-            message,
+        const blog = yield new blog_model_1.BlogModel({
+            blogDescription,
+            blogTitle,
+            blogTags,
+            imageUrl,
+            authorImage,
+            authorName,
         }).save();
-        //TODO: send mail
         return (0, response_1.handleResponse)({
             res,
-            message: "message sent successfully",
-            data: user,
+            status: 201,
+            message: "blog created successfully",
+            data: blog,
         });
     }
     catch (err) {
@@ -37,5 +39,5 @@ const getInTouch = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         });
     }
 });
-exports.default = getInTouch;
-//# sourceMappingURL=getIntouch.js.map
+exports.createBlog = createBlog;
+//# sourceMappingURL=create.Blog.js.map

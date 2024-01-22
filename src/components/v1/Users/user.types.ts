@@ -1,5 +1,12 @@
 import platformConstants from "src/configs/platformConstants";
 
+
+export interface IUser extends Document {
+  firstName: string;
+  lastName: string;
+  email: string;
+}
+
 export interface IGetIntouch extends Document {
   firstName: string;
   lastName: string;
@@ -11,15 +18,4 @@ export interface IGetIntouch extends Document {
 
 export interface INewsletter extends Document {
   email: string;
-}
-
-// blog section made by Okikijesu
-
-export interface IBlog extends Document {
-  postImage: String,
-  about: String,
-  topic: String,
-  post: String,
-  authorImage: String,
-  authorName: String
 }

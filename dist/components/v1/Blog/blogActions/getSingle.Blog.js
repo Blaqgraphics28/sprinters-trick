@@ -9,33 +9,35 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.getSingleBlog = void 0;
 const response_1 = require("../../../../utils/response");
-const user_model_1 = require("../user.model");
-const getInTouch = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { firstName, lastName, email, phoneNo, message, } = req.body;
+const blog_model_1 = require("../blog.model");
+const getSingleBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { blogId } = req.params;
     try {
-        const user = yield new user_model_1.GetIntouchModel({
-            firstName,
-            lastName,
-            email,
-            phoneNo,
-            message,
-        }).save();
-        //TODO: send mail
+        const blog = yield blog_model_1.BlogModel.findById(blogId);
+        if (!blog) {
+            return (0, response_1.handleResponse)({
+                res,
+                status: 404,
+                message: "Blog not found",
+            });
+        }
         return (0, response_1.handleResponse)({
             res,
-            message: "message sent successfully",
-            data: user,
+            message: "Blog retrieved successfully",
+            data: blog,
         });
     }
     catch (err) {
+        console.error(err);
         return (0, response_1.handleResponse)({
             res,
             err,
             status: 500,
-            message: `Internal server error:  ${err.message}`,
+            message: `Internal server error: ${err.message}`,
         });
     }
 });
-exports.default = getInTouch;
-//# sourceMappingURL=getIntouch.js.map
+exports.getSingleBlog = getSingleBlog;
+//# sourceMappingURL=getSingle.Blog.js.map

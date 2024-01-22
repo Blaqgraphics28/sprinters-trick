@@ -1,36 +1,34 @@
 import { z } from "zod";
 import { Response } from "express";
 
-import { IReq } from "src/types";
-import { blogSchema } from "../../Users/user.policies";
+import { IRequest } from "src/types";
+import { createBlogSchema } from "../blog.policies";
 import { handleResponse } from "../../../../utils/response";
 import { BlogModel } from "../blog.model";
 
-export const createBlog = async (req: IReq, res: Response) => {
+const createBlog = async (req: IRequest, res: Response) => {
   const {
-    postImage,
-    about,
-    topic,
-    post,
-    authorImage,
-    authorName,
-  }: z.infer<typeof blogSchema> = req.body;
+    description,
+    title,
+    image,
+    tags,
+    content,
+  }: z.infer<typeof createBlogSchema> = req.body;
 
   try {
-    const blog = await new BlogModel({
-      postImage,
-      about,
-      topic,
-      post,
-      authorImage,
-      authorName,
+    const Blog = await new BlogModel({
+      description,
+      title,
+      image,
+      tags,
+      content,
     }).save();
 
     return handleResponse({
       res,
       status: 201,
       message: "blog created successfully",
-      data: blog,
+      data: Blog,
     });
   } catch (err: any) {
     return handleResponse({
@@ -41,3 +39,5 @@ export const createBlog = async (req: IReq, res: Response) => {
     });
   }
 };
+
+export default createBlog;

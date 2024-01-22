@@ -15,5 +15,5 @@ router.get("/", (_req, res: Response) => {
   });
 });
 
-const v2Routers = router;
-export default v2Routers;
+const v1Routers = router;
+export default v1Routers;

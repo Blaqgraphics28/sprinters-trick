@@ -1,5 +1,7 @@
 @server = http://127.0.0.1:6080
 
+# @server = https://sprinters-api.onrender.com
+
 @api = {{server}}/v1
 
 ###
@@ -35,10 +37,12 @@ POST {{api}}/blog
 Content-Type: application/json
 
 {
-    "postImage": "Aaaa",
-    "about": "Bbbbb",
-    "topic": "eaaa",
-    "post": "opaaaa",
-    "authorImage": "poaa",
-    "authorName": "dfaaaa"
+    "title": "Aaaa",
+    "description": "Bbbbb",
+    "tags": ["eaaa"],
+    "content": "opaaaa",
+    "image": {
+        "imageId": "sprinters/af8c08743c14886b",
+        "imageUrl": "https://res.cloudinary.com/dprg3f2vd/image/upload/v1705918875/sprinters/af8c08743c14886b.jpg"
+    }
 }

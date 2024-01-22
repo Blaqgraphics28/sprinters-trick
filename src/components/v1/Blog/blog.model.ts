@@ -1,36 +1,24 @@
-import {model, Schema } from "mongoose"
-import { IBlog } from "../Users/user.types";
+import { model, Schema, Types } from "mongoose";
 
-const blogSchema = new Schema<IBlog>({
-    postImage: {
-        type: String,
-        required: [true, 'an image post is required']  
-    },
-    about: {
-        type: String,
-        required: [true, 'please enter what the post is all about']
-    },
-    topic: {
-        type: String,
-        required: [true, 'a topic is required']
-    },
-    post: {
-        type: String,
-        required: [true, 'post is required']
-    },
-    authorImage: {
-        type: String,
-        required: [true, 'author image is required']
-    },
-    authorName: {
-        type: String,
-        required: [true, 'author name is required']
-    }
-},
-{timestamps: true}
-)
+interface IBlog extends Document {
+  description: string;
+  title: string;
+  image: { imageId: string; imageUrl: string };
+  tags: string[];
+  content: string;
+  User: Types.ObjectId;
+}
 
-export const BlogModel = model<IBlog>(
-    "Blog",
-    blogSchema
-)
+const blogSchema = new Schema<IBlog>(
+  {
+    description: String,
+    title: String,
+    image: { imageId: String, imageUrl: String },
+    tags: [String],
+    content: String,
+    User: { type: Schema.Types.ObjectId, ref: "User" },
+  },
+  { timestamps: true }
+);
+
+export const BlogModel = model<IBlog>("Blog", blogSchema);

@@ -6,11 +6,16 @@ import appConfig from ".";
 import { connectMongoDb } from "./persistence/database";
 import { handleResponse } from "../utils/response";
 import v1Routers from "../components/v1/v1Routes";
+import { v2 } from "cloudinary";
+import { IRequest } from "src/types";
+import SEEDING from "./persistence/seeder";
 
 const app: Application = express();
+const { cloudName, cloudinaryApiKey, cloudinaryApiSecret } = appConfig;
 
 const initializePersistenceAndSeeding = () => {
   connectMongoDb().catch((err: any) => console.log(err, "error"));
+  SEEDING();
 };
 
 const initializeMiddlewares = () => {
@@ -61,14 +66,20 @@ const initializeMiddlewares = () => {
       }
 
       return next();
+    })
+    .use((req: IRequest, res: Response, next: NextFunction) => {
+      v2.config({
+        cloud_name: cloudName,
+        api_key: cloudinaryApiKey,
+        api_secret: cloudinaryApiSecret,
+      });
+
+      next();
     });
 };
 
-import v2Routers from "../components/v1/v1Routes";
-
 const initializeRoutes = () => {
   app.use("/v1", v1Routers);
-  app.use("/v2", v2Routers)
 
   app.get("/", (_req, res) => {
     res.json({ message: "welcome to the Sprinters!" });

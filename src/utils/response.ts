@@ -16,7 +16,7 @@ export type handleSessionResArgType = {
   session: ClientSession;
   data?: any;
   status?: number;
-  err?: any;
+  err?: Error | any;
   message?: string;
 };
 

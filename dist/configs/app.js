@@ -6,7 +6,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const cors_1 = __importDefault(require("cors"));
 const express_1 = __importDefault(require("express"));
 const helmet_1 = __importDefault(require("helmet"));
-const _1 = __importDefault(require("."));
 const database_1 = require("./persistence/database");
 const response_1 = require("../utils/response");
 const v1Routes_1 = __importDefault(require("../components/v1/v1Routes"));
@@ -16,8 +15,11 @@ const initializePersistenceAndSeeding = () => {
 };
 const initializeMiddlewares = () => {
     const allowedOrigins = [
-        `http://localhost:${_1.default.port}`,
-        `http://127.0.0.1:${_1.default.port}`,
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://localhost:3001",
+        "http://127.0.0.1:3001",
+        "https://spinters.netlify.app/",
     ];
     const corsOptions = {
         origin: function (origin, callback) {
@@ -55,7 +57,7 @@ const initializeMiddlewares = () => {
 const initializeRoutes = () => {
     app.use("/v1", v1Routes_1.default);
     app.get("/", (_req, res) => {
-        res.json({ message: "Up and running in " + _1.default.environment });
+        res.json({ message: "welcome to the Sprinters!" });
     });
     app.all("*", (_req, res) => (0, response_1.handleResponse)({
         res,

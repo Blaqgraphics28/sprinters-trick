@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getIntouchSchema = void 0;
+exports.blogImage = exports.blogSchema = exports.newsletterSchema = exports.getIntouchSchema = void 0;
 const zod_1 = require("zod");
 const helpers_1 = require("../../../utils/helpers");
 exports.getIntouchSchema = zod_1.z.object({
@@ -11,5 +11,20 @@ exports.getIntouchSchema = zod_1.z.object({
         message: "invalid",
     }),
     message: zod_1.z.string(),
+});
+exports.newsletterSchema = zod_1.z.object({
+    email: zod_1.z.string().email(),
+});
+// blog schema created by okikijesu
+exports.blogSchema = zod_1.z.object({
+    blogDescription: zod_1.z.string(),
+    blogTitle: zod_1.z.string(),
+    imageUrl: zod_1.z.string(),
+    blogTags: zod_1.z.array(zod_1.z.string()),
+    authorImage: zod_1.z.string(),
+    authorName: zod_1.z.string()
+});
+exports.blogImage = zod_1.z.object({
+    postImage: zod_1.z.string()
 });
 //# sourceMappingURL=user.policies.js.map
