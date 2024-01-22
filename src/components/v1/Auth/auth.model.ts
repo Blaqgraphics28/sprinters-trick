@@ -2,9 +2,9 @@ import { Document, Schema, Types, model } from "mongoose";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-import { IToken } from "src/types";
-import appConfig from "src/configs";
-import platformConstants from "src/configs/platformConstants";
+import { IToken } from "../../../types";
+import appConfig from "../../../configs";
+import platformConstants from "../../../configs/platformConstants";
 
 const { authConfigs, hashPepper } = appConfig;
 

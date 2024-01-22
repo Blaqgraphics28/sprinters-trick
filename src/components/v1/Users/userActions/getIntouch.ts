@@ -1,11 +1,11 @@
 import { Response } from "express";
-import { IReq } from "../../../../types";
+import { IRequest } from "../../../../types";
 import { z } from "zod";
 import { getIntouchSchema } from "../user.policies";
 import { handleResponse } from "../../../../utils/response";
 import { GetIntouchModel } from "../user.model";
 
-const getInTouch = async (req: IReq, res: Response) => {
+const getInTouch = async (req: IRequest, res: Response) => {
   const {
     firstName,
     lastName,

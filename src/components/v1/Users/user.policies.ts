@@ -14,4 +14,3 @@ export const getIntouchSchema = z.object({
 export const newsletterSchema = z.object({
   email: z.string().email(),
 });
-

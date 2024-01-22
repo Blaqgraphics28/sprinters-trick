@@ -60,3 +60,4 @@ export const NewsletterModel = model<INewsletter>(
   "Newsletter",
   newsletterSchema
 );
+

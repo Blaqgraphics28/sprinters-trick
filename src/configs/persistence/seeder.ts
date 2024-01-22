@@ -1,5 +1,5 @@
 import { startSession } from "mongoose";
-import { UserModel } from "src/components/v1/Users/user.model";
+import { UserModel } from "../../components/v1/Users/user.model";
 import appConfig from "..";
 import { AuthModel } from "../../components/v1/Auth/auth.model";
 
