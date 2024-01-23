@@ -1,6 +1,6 @@
-# @server = http://127.0.0.1:6080
+@server = http://127.0.0.1:6080
 
-@server = https://sprinters-api.onrender.com
+# @server = https://sprinters-api.onrender.com
 
 @api = {{server}}/v1
 
@@ -15,11 +15,11 @@ POST {{api}}/users/get-in-touch
 Content-Type: application/json
 
 {
-    "firstName": "John",
-    "lastName": "Doe",
-    "email": "pokngeh@email.com",
-    "phoneNo": "+2347012893373",
-    "message": "Lorem ipseum tfh n"
+    "firstName": "Johnny",
+    "lastName": "Dore",
+    "email": "pokngop@email.com",
+    "phoneNo": "+2347012899073",
+    "message": "Loremmy ipseum tfh n"
 }
 
 ### subscribe to newsletter
@@ -27,5 +27,22 @@ POST {{api}}/users/subscribe
 Content-Type: application/json
 
 {
-    "email": "amiopsts@email.com"
+    "email": "amipsts@email.com"
+}
+
+
+#### =========== Blog
+
+POST {{api}}/blog
+Content-Type: application/json
+
+{
+    "title": "Aaaa",
+    "description": "Bbbbb",
+    "tags": ["eaaa"],
+    "content": "opaaaa",
+    "image": {
+        "imageId": "sprinters/af8c08743c14886b",
+        "imageUrl": "https://res.cloudinary.com/dprg3f2vd/image/upload/v1705918875/sprinters/af8c08743c14886b.jpg"
+    }
 }
