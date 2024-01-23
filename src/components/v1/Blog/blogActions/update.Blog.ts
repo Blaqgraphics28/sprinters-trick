@@ -1,13 +1,11 @@
 import { Response } from "express";
-import { IReq } from "../../../../types";
+import { IRequest } from "../../../../types";
 import { z } from "zod";
-import { blogSchema } from "../../Users/user.policies";
+// import { blogSchema } from "../../Users/user.policies";
 import { handleResponse } from "../../../../utils/response";
 import { BlogModel } from "../blog.model";
 
-
-
-export const updateBlog = async (req: IReq, res: Response) => {
+export const updateBlog = async (req: IRequest, res: Response) => {
   const { blogId } = req.params;
 
   const {
@@ -17,7 +15,7 @@ export const updateBlog = async (req: IReq, res: Response) => {
     imageUrl,
     authorImage,
     authorName,
-  }: z.infer<typeof blogSchema> = req.body;
+  } = req.body;
 
   try {
     const updatedBlog = await BlogModel.findByIdAndUpdate(

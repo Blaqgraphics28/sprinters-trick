@@ -3,28 +3,31 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.NewsletterModel = exports.GetIntouchModel = void 0;
+exports.NewsletterModel = exports.GetIntouchModel = exports.UserModel = void 0;
 const mongoose_1 = require("mongoose");
 const platformConstants_1 = __importDefault(require("../../../configs/platformConstants"));
+const userSchema = new mongoose_1.Schema({
+    firstName: { type: String, required: true },
+    lastName: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+}, { timestamps: true });
+exports.UserModel = (0, mongoose_1.model)("User", userSchema);
 const getInTouchSchema = new mongoose_1.Schema({
     firstName: {
         type: String,
-        required: [true, "please enter your first name"],
-        trim: true,
+        required: true,
     },
     lastName: {
         type: String,
-        required: [true, "please enter your last name"],
-        trim: true,
+        required: true,
     },
     email: {
         type: String,
-        required: [true, "please enter your email"],
-        unique: true,
+        required: true,
     },
     phoneNo: {
         type: String,
-        required: [true, "please enter your phone number"],
+        required: true,
     },
     message: {
         type: String,

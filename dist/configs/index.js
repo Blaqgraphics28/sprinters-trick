@@ -11,13 +11,25 @@ const appConfig = {
     mongoDbUri: env.dbUri || "",
     environment: env.NODE_ENV,
     port: Number(env.PORT) || 6080,
-    hashPepper: env.HashPepper,
+    hashPepper: env.HASH_PEPPER,
     authConfigs: {
         saltRounds: 10,
-        jwtSecret: env.jwtSecret || "",
+        jwtSecret: env.JWT_SECRET || "",
         sessionLifeSpan: (0, ms_1.default)("2days"),
-        maxInactivity: (0, ms_1.default)("12h"),
     },
+    cloudName: env.CLOUDINARY_NAME,
+    cloudinaryApiKey: env.CLOUDINARY_API_KEY,
+    cloudinaryApiSecret: env.CLOUDINARY_API_SECRET,
+    admin: {
+        firstName: env.FIRST_NAME,
+        lastName: env.LAST_NAME,
+        email: env.EMAIL,
+        role: env.ROLE,
+        password: env.PASSWORD,
+    },
+    mailChimpApiKey: env.MAILCHIMP_API_KEY,
+    mailChimpDC: env.MAILCHIMP_DC,
+    mailChimpHashPepper: env.MAILCHIMP_HASHPEPPER,
 };
 exports.default = appConfig;
 //# sourceMappingURL=index.js.map

@@ -8,46 +8,45 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateBlog = void 0;
-// import { blogSchema } from "../../Users/user.policies";
 const response_1 = require("../../../../utils/response");
-const blog_model_1 = require("../blog.model");
-const updateBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { blogId } = req.params;
-    const { blogDescription, blogTitle, blogTags, imageUrl, authorImage, authorName, } = req.body;
+const caseStudy_model_1 = __importDefault(require("../caseStudy.model"));
+const getCaseStudy = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { caseStudyId } = req.query;
+    let caseStudy;
     try {
-        const updatedBlog = yield blog_model_1.BlogModel.findByIdAndUpdate(blogId, {
-            blogDescription,
-            blogTitle,
-            blogTags,
-            imageUrl,
-            authorImage,
-            authorName,
-        }, { new: true, runValidators: true });
-        if (!updatedBlog) {
+        if (caseStudyId) {
+            caseStudy = yield caseStudy_model_1.default.findOne({ _id: String(caseStudyId) });
+            if (!caseStudy)
+                return (0, response_1.handleResponse)({
+                    res,
+                    message: "case study not found",
+                    status: 400,
+                });
             return (0, response_1.handleResponse)({
                 res,
-                status: 404,
-                message: "Blog not found for update",
+                message: "Success",
+                data: caseStudy,
             });
         }
+        caseStudy = yield caseStudy_model_1.default.find();
         return (0, response_1.handleResponse)({
             res,
-            status: 200,
-            message: "Blog updated successfully",
-            data: updatedBlog,
+            message: "Success",
+            data: caseStudy,
         });
     }
     catch (err) {
-        console.error(err);
         return (0, response_1.handleResponse)({
             res,
             err,
             status: 500,
-            message: `Internal server error: ${err.message}`,
+            message: "Internal server error: ${err.message}",
         });
     }
 });
-exports.updateBlog = updateBlog;
-//# sourceMappingURL=update.Blog.js.map
+exports.default = getCaseStudy;
+//# sourceMappingURL=getCaseStudy.js.map

@@ -1,4 +1,13 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -6,20 +15,25 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const cors_1 = __importDefault(require("cors"));
 const express_1 = __importDefault(require("express"));
 const helmet_1 = __importDefault(require("helmet"));
+const _1 = __importDefault(require("."));
 const database_1 = require("./persistence/database");
 const response_1 = require("../utils/response");
 const v1Routes_1 = __importDefault(require("../components/v1/v1Routes"));
+const cloudinary_1 = require("cloudinary");
+const seeder_1 = __importDefault(require("./persistence/seeder"));
 const app = (0, express_1.default)();
-const initializePersistenceAndSeeding = () => {
+const { cloudName, cloudinaryApiKey, cloudinaryApiSecret } = _1.default;
+const initializePersistenceAndSeeding = () => __awaiter(void 0, void 0, void 0, function* () {
     (0, database_1.connectMongoDb)().catch((err) => console.log(err, "error"));
-};
+    (0, seeder_1.default)();
+});
 const initializeMiddlewares = () => {
     const allowedOrigins = [
         "http://localhost:3000",
         "http://127.0.0.1:3000",
         "http://localhost:3001",
         "http://127.0.0.1:3001",
-        "https://spinters.netlify.app/",
+        "https://sprinterz.netlify.app",
     ];
     const corsOptions = {
         origin: function (origin, callback) {
@@ -52,6 +66,14 @@ const initializeMiddlewares = () => {
             });
         }
         return next();
+    })
+        .use((req, res, next) => {
+        cloudinary_1.v2.config({
+            cloud_name: cloudName,
+            api_key: cloudinaryApiKey,
+            api_secret: cloudinaryApiSecret,
+        });
+        next();
     });
 };
 const initializeRoutes = () => {

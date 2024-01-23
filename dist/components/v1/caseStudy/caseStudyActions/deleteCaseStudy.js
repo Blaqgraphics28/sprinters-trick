@@ -8,25 +8,27 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getSingleBlog = void 0;
+const caseStudy_model_1 = __importDefault(require("../caseStudy.model"));
 const response_1 = require("../../../../utils/response");
-const blog_model_1 = require("../blog.model");
-const getSingleBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { blogId } = req.params;
+const deleteCaseStudy = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { caseStudyId } = req.params;
     try {
-        const blog = yield blog_model_1.BlogModel.findById(blogId);
-        if (!blog) {
+        const deleteCaseStudy = yield caseStudy_model_1.default.findByIdAndDelete(caseStudyId);
+        if (!deleteCaseStudy) {
             return (0, response_1.handleResponse)({
                 res,
-                status: 404,
-                message: "Blog not found",
+                status: 400,
+                message: "case study not found",
             });
         }
         return (0, response_1.handleResponse)({
             res,
-            message: "Blog retrieved successfully",
-            data: blog,
+            status: 200,
+            message: "caseStudy deleted successfully",
         });
     }
     catch (err) {
@@ -35,9 +37,9 @@ const getSingleBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* 
             res,
             err,
             status: 500,
-            message: `Internal server error: ${err.message}`,
+            message: "Internal server error: ${err.message}",
         });
     }
 });
-exports.getSingleBlog = getSingleBlog;
-//# sourceMappingURL=getSingle.Blog.js.map
+exports.default = deleteCaseStudy;
+//# sourceMappingURL=deleteCaseStudy.js.map

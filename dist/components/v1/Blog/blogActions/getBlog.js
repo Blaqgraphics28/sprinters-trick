@@ -9,24 +9,30 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAllBlogs = void 0;
+exports.getBlog = void 0;
+const zod_1 = require("zod");
 const response_1 = require("../../../../utils/response");
 const blog_model_1 = require("../blog.model");
-const getAllBlogs = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const getBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const blogIdSchema = zod_1.z.object({ blog_id: zod_1.z.string().optional() });
+    const { blog_id } = blogIdSchema.parse(req.query);
+    let Blog;
     try {
-        console.log('get all blogd');
-        const blogs = yield blog_model_1.BlogModel.find({});
-        if (!blogs) {
+        if (blog_id) {
+            Blog = yield blog_model_1.BlogModel.findOne({ _id: blog_id });
+            if (!Blog)
+                return (0, response_1.handleResponse)({ res, status: 400, message: "Blog not found" });
             return (0, response_1.handleResponse)({
                 res,
-                status: 404,
-                message: "no blogs available yet",
+                message: "success",
+                data: Blog,
             });
         }
+        Blog = yield blog_model_1.BlogModel.find();
         return (0, response_1.handleResponse)({
             res,
-            status: 200,
-            data: blogs,
+            message: "success",
+            data: Blog,
         });
     }
     catch (err) {
@@ -34,9 +40,9 @@ const getAllBlogs = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
             res,
             err,
             status: 500,
-            message: `Internal server error: ${err.message}`,
+            message: `Internal server error:  ${err.message}`,
         });
     }
 });
-exports.getAllBlogs = getAllBlogs;
-//# sourceMappingURL=getAll.Blog.js.map
+exports.getBlog = getBlog;
+//# sourceMappingURL=getBlog.js.map

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "tsc": "tsc",
-    "build": "rmdir /s /q dist && tsc",
+    "build": "rm -rf dist && tsc",
     "dev": "ts-node-dev --transpile-only --respawn --exit-child --clear src/index.ts",
     "start": "npm run build && node dist/index.js"
   },

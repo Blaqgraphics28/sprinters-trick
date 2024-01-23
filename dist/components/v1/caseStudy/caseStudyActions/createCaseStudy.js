@@ -8,24 +8,33 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const response_1 = require("../../../../utils/response");
-const blog_model_1 = require("../blog.model");
-const createBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { description, title, image, tags, content, } = req.body;
+const caseStudy_model_1 = __importDefault(require("../caseStudy.model"));
+const createCaseStudy = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { projectTitle, projectSubtitle, projectDescription, projectOverview, problem, solution, clientName, projectTimeline, projectCategory, servicesProvides, coverPhoto, } = req.body;
     try {
-        const Blog = yield new blog_model_1.BlogModel({
-            description,
-            title,
-            image,
-            tags,
-            content,
+        const caseStudy = yield new caseStudy_model_1.default({
+            projectTitle,
+            projectSubtitle,
+            projectDescription,
+            projectOverview,
+            problem,
+            solution,
+            clientName,
+            projectTimeline,
+            projectCategory,
+            servicesProvides,
+            coverPhoto,
         }).save();
         return (0, response_1.handleResponse)({
             res,
             status: 201,
-            message: "blog created successfully",
-            data: Blog,
+            message: "caseStudy created successfully",
+            data: caseStudy,
         });
     }
     catch (err) {
@@ -33,9 +42,9 @@ const createBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             res,
             err,
             status: 500,
-            message: `Internal server error:  ${err.message}`,
+            message: "Internal server error: ${err.message}",
         });
     }
 });
-exports.default = createBlog;
-//# sourceMappingURL=create.Blog.js.map
+exports.default = createCaseStudy;
+//# sourceMappingURL=createCaseStudy.js.map

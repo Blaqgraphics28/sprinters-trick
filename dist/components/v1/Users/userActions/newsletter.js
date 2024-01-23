@@ -25,7 +25,7 @@ const subscribeToNewsletter = (req, res) => __awaiter(void 0, void 0, void 0, fu
         yield new user_model_1.NewsletterModel({ email }).save();
         return (0, response_1.handleResponse)({
             res,
-            message: "successfully",
+            message: "subscribed to newsletter successfully",
         });
     }
     catch (error) {
