@@ -24,6 +24,9 @@ const appConfig = {
     role: env.ROLE,
     password: env.PASSWORD,
   },
+  mailChimpApiKey: env.MAILCHIMP_API_KEY,
+  mailChimpDC: env.MAILCHIMP_DC,
+  mailChimpHashPepper: env.MAILCHIMP_HASHPEPPER,
 };
 
 export default appConfig;

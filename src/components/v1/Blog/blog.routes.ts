@@ -3,7 +3,7 @@ import { Router } from "express";
 import policyMiddleware from "../../../appMiddlewares/policy.middlewares";
 import { deleteBlog } from "./blogActions/delete.Blog";
 import { upload } from "../../../configs/fileUplod.config";
-import { uploadImage } from "./blogActions/uploadImage";
+import { uploadImage } from "../upload/uploadImage";
 import { getBlog } from "./blogActions/getBlog";
 import { createBlogSchema } from "./blog.policies";
 import createBlog from "./blogActions/create.Blog";

@@ -1,8 +1,8 @@
 import { z } from "zod";
 import { Response } from "express";
 
-import { IRequest } from "src/types";
-import { handleResponse } from "src/utils/response";
+import { IRequest } from "../../../../types";
+import { handleResponse } from "../../../../utils/response";
 import CaseStudyModel from "../caseStudy.model";
 import { createCaseStudySchema } from "../caseStudy.policies";
 

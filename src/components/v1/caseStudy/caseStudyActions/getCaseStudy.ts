@@ -1,8 +1,8 @@
 import { Response } from "express";
 import { z } from "zod";
 
-import { IRequest } from "src/types";
-import { handleResponse } from "src/utils/response";
+import { IRequest } from "../../../../types";
+import { handleResponse } from "../../../../utils/response";
 import CaseStudyModel from "../caseStudy.model";
 
 const getCaseStudy = async (req: IRequest, res: Response) => {

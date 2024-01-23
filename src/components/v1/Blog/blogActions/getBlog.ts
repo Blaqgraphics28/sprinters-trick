@@ -1,20 +1,20 @@
 import { z } from "zod";
 import { Response } from "express";
 
-import { IReq } from "src/types";
+import { IRequest } from "src/types";
 
 import { handleResponse } from "../../../../utils/response";
 import { BlogModel } from "../blog.model";
 
-export const getBlog = async (req: IReq, res: Response) => {
-  const blogIdSchema = z.object({ blogId: z.string() });
-  const { blogId }: z.infer<typeof blogIdSchema> = blogIdSchema.parse(
+export const getBlog = async (req: IRequest, res: Response) => {
+  const blogIdSchema = z.object({ blog_id: z.string().optional() });
+  const { blog_id }: z.infer<typeof blogIdSchema> = blogIdSchema.parse(
     req.query
   );
   let Blog;
   try {
-    if (blogId) {
-      Blog = await BlogModel.findOne({ _id: blogId });
+    if (blog_id) {
+      Blog = await BlogModel.findOne({ _id: blog_id });
       if (!Blog)
         return handleResponse({ res, status: 400, message: "Blog not found" });
 

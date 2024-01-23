@@ -22,7 +22,7 @@ const subscribeToNewsletter = async (req: Request, res: Response) => {
 
     return handleResponse({
       res,
-      message: "successfully",
+      message: "subscribed to newsletter successfully",
     });
   } catch (error) {
     handleResponse({

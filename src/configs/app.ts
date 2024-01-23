@@ -10,10 +10,11 @@ import { v2 } from "cloudinary";
 import { IRequest } from "src/types";
 import SEEDING from "./persistence/seeder";
 
+
 const app: Application = express();
 const { cloudName, cloudinaryApiKey, cloudinaryApiSecret } = appConfig;
 
-const initializePersistenceAndSeeding = () => {
+const initializePersistenceAndSeeding = async () => {
   connectMongoDb().catch((err: any) => console.log(err, "error"));
   SEEDING();
 };
@@ -24,7 +25,7 @@ const initializeMiddlewares = () => {
     "http://127.0.0.1:3000",
     "http://localhost:3001",
     "http://127.0.0.1:3001",
-    "https://spinters.netlify.app/",
+    "https://sprinterz.netlify.app",
   ];
 
   const corsOptions = {

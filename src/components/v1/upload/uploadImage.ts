@@ -2,8 +2,8 @@ import { Response } from "express";
 import { randomBytes } from "node:crypto";
 import { v2, UploadApiResponse } from "cloudinary";
 
-import { handleResponse } from "../../../../utils/response";
-import { IRequest } from "src/types";
+import { handleResponse } from "../../../utils/response";
+import { IRequest } from "../../../types";
 
 export function uploadImage(req: IRequest, res: Response) {
   if (!req.file) {

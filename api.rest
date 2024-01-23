@@ -31,18 +31,76 @@ Content-Type: application/json
 }
 
 
-#### =========== Blog
+#### =========== Blog ============
 
+### create Blog
 POST {{api}}/blog
 Content-Type: application/json
 
 {
-    "title": "Aaaa",
-    "description": "Bbbbb",
-    "tags": ["eaaa"],
-    "content": "opaaaa",
+    "title": "Abubub",
+    "description": "Buthopb",
+    "tags": ["egboa", "rghsjkue"],
+    "content": "opwerc",
     "image": {
-        "imageId": "sprinters/af8c08743c14886b",
-        "imageUrl": "https://res.cloudinary.com/dprg3f2vd/image/upload/v1705918875/sprinters/af8c08743c14886b.jpg"
+        "imageId": "sprinters/b4129df28e55301c",
+        "imageUrl": "https://res.cloudinary.com/dprg3f2vd/image/upload/v1706013508/sprinters/b4129df28e55301c.jpg"
     }
+}
+
+### Get all Blogs
+GET {{api}}/blog
+
+### Get blog by Id
+GET {{api}}/blog?blog_id=65afb066ef36a9f83fdd05b3
+
+### delete Blog
+DELETE {{api}}/blog/65afb066ef36a9f83fdd05b3
+
+### upload blog Image
+POST {{api}}/blog/upload/image
+Content-Type: multipart/form-data
+
+{
+    "blogImage": "<image_file>"
+}
+
+###### ====== case study ==========
+
+### create case study
+POST {{api}}/case-study
+Content-Type: application/json
+
+{
+    "projectTitle": "asdfg",
+  "projectSubtitle": "vvvvvvv",
+  "projectDescription": "oooooo",
+  "projectOverview": "ppppppp",
+  "problem": "lllllll",
+  "solution": "z.string()",
+  "clientName": "z.string()",
+  "projectTimeline": "z.string()",
+  "projectCategory": "z.string()",
+  "servicesProvides": "z.string()",
+  "coverPhoto": {
+    "imageId": "sprinters/ec90aab48e9c60f9",
+    "imageUrl": "https://res.cloudinary.com/dprg3f2vd/image/upload/v1706014500/sprinters/ec90aab48e9c60f9.jpg"
+  }
+}
+
+### get all case studies
+GET {{api}}/case-study
+
+### get case study
+GET {{api}}/case-study?caseStudyId=65afb76af24d3cd0a3d24897
+
+### delete case study
+DELETE {{api}}/case-study/65afb76af24d3cd0a3d24897
+
+### upload case study cover letter
+POST {{api}}/case-study/upload/image
+Content-Type: multipart/form-data
+
+{
+    "cover-photo": "<image_file>"
 }

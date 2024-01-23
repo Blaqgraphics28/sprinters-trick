@@ -1,9 +1,9 @@
 import { Response } from "express";
-import { IReq } from "../../../../types";
+import { IRequest } from "../../../../types";
 import { handleResponse } from "../../../../utils/response";
 import { BlogModel } from "../blog.model";
 
-export const deleteBlog = async (req: IReq, res: Response) => {
+export const deleteBlog = async (req: IRequest, res: Response) => {
   const { blogId } = req.params;
 
   try {
