@@ -15,7 +15,8 @@ const getInTouch = async (req: IRequest, res: Response) => {
   }: z.infer<typeof getIntouchSchema> = req.body;
 
   try {
-    const user = await new GetIntouchModel({
+
+    const getInTouch = await new GetIntouchModel({
       firstName,
       lastName,
       email,
@@ -27,7 +28,7 @@ const getInTouch = async (req: IRequest, res: Response) => {
     return handleResponse({
       res,
       message: "message sent successfully",
-      data: user,
+      data: getInTouch,
     });
   } catch (err: any) {
     return handleResponse({

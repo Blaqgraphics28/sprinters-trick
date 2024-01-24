@@ -23,6 +23,7 @@ const appConfig = {
     email: env.EMAIL,
     role: env.ROLE,
     password: env.PASSWORD,
+    phoneNo: env.PHONE_NO,
   },
   mailChimpApiKey: env.MAILCHIMP_API_KEY,
   mailChimpDC: env.MAILCHIMP_DC,

@@ -23,6 +23,7 @@ const seeding = async () => {
       firstName: admin.firstName,
       lastName: admin.lastName,
       email: admin.email,
+      phoneNo: admin.phoneNo,
     }).save({ session });
 
     await new AuthModel({

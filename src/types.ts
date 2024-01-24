@@ -5,7 +5,9 @@ import { IAuth } from "./components/v1/Auth/auth.model";
 
 export interface IRequest extends Request {
   user?: IUser;
-  auth?: IAuth;
+  userAuth?: IAuth;
+  decoded?: IToken;
+  ref?: string;
 }
 
 export interface IToken {

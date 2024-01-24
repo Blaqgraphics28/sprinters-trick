@@ -1,41 +1,47 @@
 import { Response } from "express";
 import { IRequest } from "../../../../types";
 import { z } from "zod";
-// import { blogSchema } from "../../Users/user.policies";
 import { handleResponse } from "../../../../utils/response";
 import { BlogModel } from "../blog.model";
+import { createBlogSchema } from "../blog.policies";
 
-export const updateBlog = async (req: IRequest, res: Response) => {
+const editBlog = async (req: IRequest, res: Response) => {
+  const {
+    description,
+    title,
+    image,
+    tags,
+    content,
+  }: z.infer<typeof createBlogSchema> = req.body;
   const { blogId } = req.params;
 
-  const {
-    blogDescription,
-    blogTitle,
-    blogTags,
-    imageUrl,
-    authorImage,
-    authorName,
-  } = req.body;
-
   try {
+    if (!blogId)
+      return handleResponse({
+        res,
+        status: 400,
+        message: "please, provide blog Id",
+      });
+
     const updatedBlog = await BlogModel.findByIdAndUpdate(
       blogId,
       {
-        blogDescription,
-        blogTitle,
-        blogTags,
-        imageUrl,
-        authorImage,
-        authorName,
+        $set: {
+          description,
+          title,
+          image,
+          tags,
+          content,
+        },
       },
-      { new: true, runValidators: true }
+      { new: true }
     );
 
     if (!updatedBlog) {
       return handleResponse({
         res,
         status: 404,
-        message: "Blog not found for update",
+        message: "Blog not found",
       });
     }
 
@@ -46,7 +52,6 @@ export const updateBlog = async (req: IRequest, res: Response) => {
       data: updatedBlog,
     });
   } catch (err: any) {
-    console.error(err);
     return handleResponse({
       res,
       err,
@@ -55,3 +60,5 @@ export const updateBlog = async (req: IRequest, res: Response) => {
     });
   }
 };
+
+export default editBlog;
