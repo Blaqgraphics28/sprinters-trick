@@ -1,8 +1,8 @@
 import { NextFunction, Response } from "express";
-import { IAuth } from "../../src/components/v1/Auth/auth.model";
-import platformConstants from "../../src/configs/platformConstants";
-import { IRequest } from "../../src/types";
-import { handleResponse } from "../../src/utils/response";
+import { IAuth } from "../components/v1/Auth/auth.model";
+import platformConstants from "../configs/platformConstants";
+import { IRequest } from "../types";
+import { handleResponse } from "../utils/response";
 
 type allowedRoles = (typeof platformConstants.userRole)[number];
 

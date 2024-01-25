@@ -2,8 +2,8 @@ import { NextFunction, Response } from "express";
 
 import { IRequest } from "../types";
 import { handleResponse } from "../utils/response";
-import { UserModel } from "../../src/components/v1/Users/user.model";
-import { AuthModel } from "../../src/components/v1/Auth/auth.model";
+import { UserModel } from "../components/v1/Users/user.model";
+import { AuthModel } from "../components/v1/Auth/auth.model";
 
 const requireAuth = async (
   req: IRequest,

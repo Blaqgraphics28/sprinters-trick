@@ -37,7 +37,7 @@ const deleteCaseStudy = (req, res) => __awaiter(void 0, void 0, void 0, function
             res,
             err,
             status: 500,
-            message: "Internal server error: ${err.message}",
+            message: `Internal Server Error:  ${err.message}`,
         });
     }
 });

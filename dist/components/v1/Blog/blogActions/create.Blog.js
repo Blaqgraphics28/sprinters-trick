@@ -13,8 +13,9 @@ const response_1 = require("../../../../utils/response");
 const blog_model_1 = require("../blog.model");
 const createBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { description, title, image, tags, content, } = req.body;
+    let Blog;
     try {
-        const Blog = yield new blog_model_1.BlogModel({
+        Blog = yield new blog_model_1.BlogModel({
             description,
             title,
             image,

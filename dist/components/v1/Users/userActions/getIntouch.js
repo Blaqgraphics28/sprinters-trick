@@ -14,7 +14,7 @@ const user_model_1 = require("../user.model");
 const getInTouch = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { firstName, lastName, email, phoneNo, message, } = req.body;
     try {
-        const user = yield new user_model_1.GetIntouchModel({
+        const getInTouch = yield new user_model_1.GetIntouchModel({
             firstName,
             lastName,
             email,
@@ -25,7 +25,7 @@ const getInTouch = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         return (0, response_1.handleResponse)({
             res,
             message: "message sent successfully",
-            data: user,
+            data: getInTouch,
         });
     }
     catch (err) {

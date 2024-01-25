@@ -35,7 +35,7 @@ function uploadImage(req, res) {
         .catch((err) => (0, response_1.handleResponse)({
         res,
         err,
-        message: "Internal Server Error",
+        message: `Internal Server Error:  ${err.message}`,
         status: 500,
     }));
 }

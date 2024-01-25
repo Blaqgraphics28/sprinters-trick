@@ -26,10 +26,12 @@ const appConfig = {
         email: env.EMAIL,
         role: env.ROLE,
         password: env.PASSWORD,
+        phoneNo: env.PHONE_NO,
     },
     mailChimpApiKey: env.MAILCHIMP_API_KEY,
     mailChimpDC: env.MAILCHIMP_DC,
     mailChimpHashPepper: env.MAILCHIMP_HASHPEPPER,
+    mailchimpServerPrefix: env.MAILCHIMP_SERVER_PREFIX,
 };
 exports.default = appConfig;
 //# sourceMappingURL=index.js.map

@@ -10,4 +10,4 @@ exports.upload = (0, multer_1.default)({
     storage,
     limits: { fileSize: 1024 * 1024 },
 });
-//# sourceMappingURL=fileUplod.config.js.map
+//# sourceMappingURL=fileUpload.config.js.map

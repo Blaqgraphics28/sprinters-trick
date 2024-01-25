@@ -32,6 +32,7 @@ const seeding = () => __awaiter(void 0, void 0, void 0, function* () {
             firstName: admin.firstName,
             lastName: admin.lastName,
             email: admin.email,
+            phoneNo: admin.phoneNo,
         }).save({ session });
         yield new auth_model_1.AuthModel({
             User: user._id,

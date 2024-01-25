@@ -28,11 +28,11 @@ const subscribeToNewsletter = (req, res) => __awaiter(void 0, void 0, void 0, fu
             message: "subscribed to newsletter successfully",
         });
     }
-    catch (error) {
+    catch (err) {
         (0, response_1.handleResponse)({
             res,
             status: 500,
-            message: "Internal Server Error",
+            message: `Internal Server Error:  ${err.message}`,
         });
     }
 });

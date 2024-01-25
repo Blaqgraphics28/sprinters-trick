@@ -21,11 +21,15 @@ const response_1 = require("../utils/response");
 const v1Routes_1 = __importDefault(require("../components/v1/v1Routes"));
 const cloudinary_1 = require("cloudinary");
 const seeder_1 = __importDefault(require("./persistence/seeder"));
+const email_config_1 = __importDefault(require("./email/email.config"));
 const app = (0, express_1.default)();
 const { cloudName, cloudinaryApiKey, cloudinaryApiSecret } = _1.default;
 const initializePersistenceAndSeeding = () => __awaiter(void 0, void 0, void 0, function* () {
     (0, database_1.connectMongoDb)().catch((err) => console.log(err, "error"));
     (0, seeder_1.default)();
+    yield (0, email_config_1.default)().then((e) => {
+        console.log("e  ", e);
+    });
 });
 const initializeMiddlewares = () => {
     const allowedOrigins = [

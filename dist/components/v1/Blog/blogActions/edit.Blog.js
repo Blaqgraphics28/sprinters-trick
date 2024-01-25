@@ -9,27 +9,32 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.updateBlog = void 0;
-// import { blogSchema } from "../../Users/user.policies";
 const response_1 = require("../../../../utils/response");
 const blog_model_1 = require("../blog.model");
-const updateBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const editBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { description, title, image, tags, content, } = req.body;
     const { blogId } = req.params;
-    const { blogDescription, blogTitle, blogTags, imageUrl, authorImage, authorName, } = req.body;
     try {
+        if (!blogId)
+            return (0, response_1.handleResponse)({
+                res,
+                status: 400,
+                message: "please, provide blog Id",
+            });
         const updatedBlog = yield blog_model_1.BlogModel.findByIdAndUpdate(blogId, {
-            blogDescription,
-            blogTitle,
-            blogTags,
-            imageUrl,
-            authorImage,
-            authorName,
-        }, { new: true, runValidators: true });
+            $set: {
+                description,
+                title,
+                image,
+                tags,
+                content,
+            },
+        }, { new: true });
         if (!updatedBlog) {
             return (0, response_1.handleResponse)({
                 res,
                 status: 404,
-                message: "Blog not found for update",
+                message: "Blog not found",
             });
         }
         return (0, response_1.handleResponse)({
@@ -40,7 +45,6 @@ const updateBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         });
     }
     catch (err) {
-        console.error(err);
         return (0, response_1.handleResponse)({
             res,
             err,
@@ -49,5 +53,5 @@ const updateBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         });
     }
 });
-exports.updateBlog = updateBlog;
-//# sourceMappingURL=update.Blog.js.map
+exports.default = editBlog;
+//# sourceMappingURL=edit.Blog.js.map
