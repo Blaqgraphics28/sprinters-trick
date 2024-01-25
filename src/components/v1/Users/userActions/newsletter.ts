@@ -24,11 +24,11 @@ const subscribeToNewsletter = async (req: Request, res: Response) => {
       res,
       message: "subscribed to newsletter successfully",
     });
-  } catch (error) {
+  } catch (err: any) {
     handleResponse({
       res,
       status: 500,
-      message: "Internal Server Error",
+      message: `Internal Server Error:  ${err.message}`,
     });
   }
 };

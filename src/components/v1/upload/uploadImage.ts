@@ -40,11 +40,11 @@ export function uploadImage(req: IRequest, res: Response) {
         },
       })
     )
-    .catch((err) =>
+    .catch((err: any) =>
       handleResponse({
         res,
         err,
-        message: "Internal Server Error",
+        message: `Internal Server Error:  ${err.message}`,
         status: 500,
       })
     );

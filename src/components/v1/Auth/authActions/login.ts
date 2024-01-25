@@ -56,7 +56,11 @@ const login = async (req: IRequest, res: Response) => {
       },
     });
   } catch (error: any) {
-    return handleResponse({ res, status: 500, message: `${error.message}` });
+    return handleResponse({
+      res,
+      status: 500,
+      message: `Internal Server Error:  ${error.message}`,
+    });
   }
 };
 

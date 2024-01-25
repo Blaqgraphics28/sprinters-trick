@@ -36,7 +36,7 @@ const getCaseStudy = async (req: IRequest, res: Response) => {
       res,
       err,
       status: 500,
-      message: "Internal server error: ${err.message}",
+      message: `Internal Server Error:  ${err.message}`,
     });
   }
 };

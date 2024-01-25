@@ -9,7 +9,7 @@ import v1Routers from "../components/v1/v1Routes";
 import { v2 } from "cloudinary";
 import { IRequest } from "src/types";
 import SEEDING from "./persistence/seeder";
-
+import sendMail from "./email/email.config";
 
 const app: Application = express();
 const { cloudName, cloudinaryApiKey, cloudinaryApiSecret } = appConfig;
@@ -17,6 +17,9 @@ const { cloudName, cloudinaryApiKey, cloudinaryApiSecret } = appConfig;
 const initializePersistenceAndSeeding = async () => {
   connectMongoDb().catch((err: any) => console.log(err, "error"));
   SEEDING();
+  await sendMail().then((e) => {
+    console.log("e  ", e);
+  });
 };
 
 const initializeMiddlewares = () => {

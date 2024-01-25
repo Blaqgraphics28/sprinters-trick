@@ -28,6 +28,7 @@ const appConfig = {
   mailChimpApiKey: env.MAILCHIMP_API_KEY,
   mailChimpDC: env.MAILCHIMP_DC,
   mailChimpHashPepper: env.MAILCHIMP_HASHPEPPER,
+  mailchimpServerPrefix: env.MAILCHIMP_SERVER_PREFIX,
 };
 
 export default appConfig;
