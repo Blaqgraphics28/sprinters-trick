@@ -26,7 +26,7 @@ const app = (0, express_1.default)();
 const { cloudName, cloudinaryApiKey, cloudinaryApiSecret } = _1.default;
 const initializePersistenceAndSeeding = () => __awaiter(void 0, void 0, void 0, function* () {
     (0, database_1.connectMongoDb)().catch((err) => console.log(err, "error"));
-    (0, seeder_1.default)();
+    yield (0, seeder_1.default)();
     yield (0, email_config_1.default)().then((e) => {
         console.log("e  ", e);
     });
