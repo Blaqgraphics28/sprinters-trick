@@ -16,7 +16,7 @@ const { cloudName, cloudinaryApiKey, cloudinaryApiSecret } = appConfig;
 
 const initializePersistenceAndSeeding = async () => {
   connectMongoDb().catch((err: any) => console.log(err, "error"));
-  SEEDING();
+  await SEEDING();
   await sendMail().then((e) => {
     console.log("e  ", e);
   });
