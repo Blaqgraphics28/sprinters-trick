@@ -2,13 +2,22 @@ import { Response } from "express";
 import { IRequest } from "../../../../types";
 import { handleResponse } from "../../../../utils/response";
 import { BlogModel } from "../blog.model";
+import { v2 } from "cloudinary";
 
 export const deleteBlog = async (req: IRequest, res: Response) => {
-  const { blogId } = req.params;
+  const { blogId, imageId } = req.params;
 
   try {
-    const deletedBlog = await BlogModel.findByIdAndDelete(blogId);
+    const ImageId = imageId.replace("sprinters/", "");
+    await v2.uploader
+      .destroy(ImageId, {
+        resource_type: "image",
+      })
+      .catch((err) => {
+        throw err;
+      });
 
+    const deletedBlog = await BlogModel.findByIdAndDelete(blogId);
     if (!deletedBlog) {
       return handleResponse({
         res,

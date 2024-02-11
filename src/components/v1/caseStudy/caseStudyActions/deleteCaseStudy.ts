@@ -3,13 +3,24 @@ import { Response } from "express";
 import { IRequest } from "src/types";
 import CaseStudyModel from "../caseStudy.model";
 import { handleResponse } from "../../../../utils/response";
+import { v2 } from "cloudinary";
 
 const deleteCaseStudy = async (req: IRequest, res: Response) => {
-  const { caseStudyId } = req.params;
+  const { caseStudyId, imageId } = req.params;
 
   try {
-    const deleteCaseStudy = await CaseStudyModel.findByIdAndDelete(caseStudyId);
+    if (!imageId)
+      return handleResponse({
+        res,
+        message: "please provide image id",
+      });
 
+    const ImageId = imageId.replace("sprinters/", "");
+    await v2.uploader.destroy(ImageId, {
+      resource_type: "image",
+    });
+
+    const deleteCaseStudy = await CaseStudyModel.findByIdAndDelete(caseStudyId);
     if (!deleteCaseStudy) {
       return handleResponse({
         res,

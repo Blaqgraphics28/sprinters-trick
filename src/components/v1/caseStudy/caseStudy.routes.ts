@@ -1,15 +1,18 @@
 import { Router } from "express";
 import createCaseStudy from "./caseStudyActions/createCaseStudy";
-import { createCaseStudySchema } from "./caseStudy.policies";
+import {
+  createCaseStudySchema,
+  editCaseStudySchema,
+} from "./caseStudy.policies";
 import policyMiddleware from "../../../appMiddlewares/policy.middlewares";
 import getCaseStudy from "./caseStudyActions/getCaseStudy";
 import deleteCaseStudy from "./caseStudyActions/deleteCaseStudy";
 import { upload } from "../../../configs/fileUpload.config";
-import { uploadImage } from "../upload/uploadImage";
 import validateToken from "../../../appMiddlewares/validateToken";
 import requireAuth from "../../../appMiddlewares/requireAuth";
 import grantAccess from "../../../appMiddlewares/hasPermission";
 import editCaseStudy from "./caseStudyActions/editCaseStudy";
+import { uploadImageMiddleware } from "../../../appMiddlewares/imgeUpload";
 
 const router = Router();
 
@@ -19,32 +22,29 @@ router.post(
   validateToken,
   requireAuth,
   grantAccess(["admin"]),
+  upload.single("cover-photo"),
+  uploadImageMiddleware,
   createCaseStudy
 );
 router.get("/", getCaseStudy);
 router.patch(
   "/update/:id",
-  policyMiddleware(createCaseStudySchema),
+  policyMiddleware(editCaseStudySchema),
   validateToken,
   requireAuth,
   grantAccess(["admin"]),
+  upload.single("cover-photo"),
+  uploadImageMiddleware,
   editCaseStudy
 );
 router.delete(
-  "/:caseStudyId",
+  "/:caseStudyId/:caseStudyId/:imageId",
   validateToken,
   requireAuth,
   grantAccess(["admin"]),
   deleteCaseStudy
 );
-router.post(
-  "/upload/image",
-  validateToken,
-  requireAuth,
-  grantAccess(["admin"]),
-  upload.single("cover-photo"),
-  uploadImage
-);
+
 
 const caseStudyRouter = router;
 export default caseStudyRouter;

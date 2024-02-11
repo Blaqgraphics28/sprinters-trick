@@ -9,12 +9,12 @@ const editBlog = async (req: IRequest, res: Response) => {
   const {
     description,
     title,
-    image,
     tags,
     content,
   }: z.infer<typeof createBlogSchema> = req.body;
   const { blogId } = req.params;
 
+  const { imageDetails } = req;
   try {
     if (!blogId)
       return handleResponse({
@@ -29,7 +29,7 @@ const editBlog = async (req: IRequest, res: Response) => {
         $set: {
           description,
           title,
-          image,
+          image: imageDetails,
           tags,
           content,
         },

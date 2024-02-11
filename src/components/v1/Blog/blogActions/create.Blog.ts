@@ -10,18 +10,19 @@ const createBlog = async (req: IRequest, res: Response) => {
   const {
     description,
     title,
-    image,
     tags,
     content,
   }: z.infer<typeof createBlogSchema> = req.body;
 
+  const { imageDetails } = req;
   let Blog;
   try {
     Blog = await new BlogModel({
       description,
       title,
-      image,
-      tags,
+      image: imageDetails,
+      // tags,
+      tags: [tags],
       content,
     }).save();
 

@@ -1,11 +1,18 @@
 import { z } from "zod";
 
 export const createBlogSchema = z.object({
-  description: z.string(),
   title: z.string(),
-  image: z.object({ imageId: z.string(), imageUrl: z.string() }),
   tags: z.array(z.string()),
   content: z.string(),
+  description: z.string(),
+});
+
+export const editBlogSchema = z.object({
+  description: z.string(),
+  title: z.string(),
+  tags: z.string(),
+  content: z.string(),
+  imageId: z.string(),
 });
 
 export const blogImage = z.object({

@@ -3,14 +3,14 @@ import { Router } from "express";
 import policyMiddleware from "../../../appMiddlewares/policy.middlewares";
 import { deleteBlog } from "./blogActions/delete.Blog";
 import { upload } from "../../../configs/fileUpload.config";
-import { uploadImage } from "../upload/uploadImage";
 import { getBlog } from "./blogActions/getBlog";
-import { createBlogSchema } from "./blog.policies";
+import { createBlogSchema, editBlogSchema } from "./blog.policies";
 import createBlog from "./blogActions/create.Blog";
 import validateToken from "../../../appMiddlewares/validateToken";
 import requireAuth from "../../../appMiddlewares/requireAuth";
 import grantAccess from "../../../appMiddlewares/hasPermission";
 import editBlog from "./blogActions/edit.Blog";
+import { uploadImageMiddleware } from "../../../appMiddlewares/imgeUpload";
 const router = Router();
 
 router.post(
@@ -19,32 +19,29 @@ router.post(
   validateToken,
   requireAuth,
   grantAccess(["admin"]),
+  upload.single("blog-image"),
+  uploadImageMiddleware,
   createBlog
 );
 router.get("/", getBlog);
 router.patch(
-  "/update/:blogId",
-  policyMiddleware(createBlogSchema),
+  "/update",
+  policyMiddleware(editBlogSchema),
   validateToken,
   requireAuth,
   grantAccess(["admin"]),
+  upload.single("blog-image"),
+  uploadImageMiddleware,
   editBlog
 );
 router.delete(
-  "/:blogId",
+  "/:blogId/:imageId",
   validateToken,
   requireAuth,
   grantAccess(["admin"]),
   deleteBlog
 );
-router.post(
-  "/upload/image",
-  validateToken,
-  requireAuth,
-  grantAccess(["admin"]),
-  upload.single("blogImage"),
-  uploadImage
-);
+
 
 const blogRouter = router;
 export default blogRouter;

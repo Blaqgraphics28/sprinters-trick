@@ -33,12 +33,13 @@ const login = async (req: IRequest, res: Response) => {
       });
     }
 
-    if (!userAuth.comparePassword(password))
-      return handleResponse({
-        res,
-        message: "Invalid login credentials",
-        status: 401,
-      });
+if (!userAuth.comparePassword(password))
+  return handleResponse({
+    res,
+    message: "Invalid login credentials",
+    status: 401,
+  });
+
 
     const token = userAuth.generateToken({
       data: {

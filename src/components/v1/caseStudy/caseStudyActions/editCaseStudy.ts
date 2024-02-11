@@ -1,9 +1,10 @@
 import { Response } from "express";
 import { IRequest } from "../../../../types";
 import { handleResponse } from "../../../../utils/response";
-import { createCaseStudySchema } from "../caseStudy.policies";
+import { editCaseStudySchema } from "../caseStudy.policies";
 import { z } from "zod";
 import CaseStudyModel from "../caseStudy.model";
+import { v2 } from "cloudinary";
 
 const editCaseStudy = async (req: IRequest, res: Response) => {
   const {
@@ -17,13 +18,12 @@ const editCaseStudy = async (req: IRequest, res: Response) => {
     projectTimeline,
     projectCategory,
     servicesProvides,
-    coverPhoto,
-  }: z.infer<typeof createCaseStudySchema> = req.body;
-
+  }: z.infer<typeof editCaseStudySchema> = req.body;
   const Id = z.object({ id: z.string().optional() });
   const { id }: z.infer<typeof Id> = req.params;
   let caseStudy;
   try {
+    const { imageDetails } = req;
     caseStudy = await CaseStudyModel.findById(id);
     if (!caseStudy)
       return handleResponse({
@@ -44,7 +44,7 @@ const editCaseStudy = async (req: IRequest, res: Response) => {
         projectTimeline,
         projectCategory,
         servicesProvides,
-        coverPhoto,
+        coverPhoto: imageDetails,
       },
       new: true,
     });

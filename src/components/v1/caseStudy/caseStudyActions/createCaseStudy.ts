@@ -18,9 +18,9 @@ const createCaseStudy = async (req: IRequest, res: Response) => {
     projectTimeline,
     projectCategory,
     servicesProvides,
-    coverPhoto,
   }: z.infer<typeof createCaseStudySchema> = req.body;
 
+  const { imageDetails } = req;
   try {
     const caseStudy = await new CaseStudyModel({
       projectTitle,
@@ -33,7 +33,7 @@ const createCaseStudy = async (req: IRequest, res: Response) => {
       projectTimeline,
       projectCategory,
       servicesProvides,
-      coverPhoto,
+      coverPhoto: imageDetails,
     }).save();
 
     return handleResponse({

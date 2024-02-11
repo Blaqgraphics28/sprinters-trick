@@ -1,11 +1,11 @@
-# @server = http://127.0.0.1:6080
+@server = http://127.0.0.1:6080
 
-@server = https://sprinters-api.onrender.com
+# @server = https://sprinters-api.onrender.com
 
 
 @api = {{server}}/v1
 
-@token= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWYiOiI2NWFmYWZhOGY3OWNiYjFjOWQ0MDJlYjMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MDYxMTA3NDcsImV4cCI6MTg3ODkxMDc0NywiYXVkIjoid2ViLXVzZXIiLCJpc3MiOiJzcHJpbnRlcnMtZGV2ZWxvcG1lbnQifQ.AdGZzfQqPkxsrJn5aFgc8JF4Ya4b8FYWF4GsPmxexNQ
+@token= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWYiOiI2NWM0Y2U1ZWY0YmE3YmI2OGQ5ZDlmOWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MDc2MTA3NDgsImV4cCI6MTg4MDQxMDc0OCwiYXVkIjoid2ViLXVzZXIiLCJpc3MiOiJzcHJpbnRlcnMtZGV2ZWxvcG1lbnQifQ.L8Bq_7vfCEnIV9meQ_ociSIKO-fXzI0t7zzeOtVY2Aw
 
 ###
 GET {{server}}
@@ -56,10 +56,7 @@ Authorization: Bearer {{token}}
     "description": "Buopb",
     "tags": ["egba", "rghjkue"],
     "content": "oerc",
-    "image": {
-        "imageId": "sprinters/b4129df28e55301c",
-        "imageUrl": "https://res.cloudinary.com/dprg3f2vd/image/upload/v1706013508/sprinters/b4129df28e55301c.jpg"
-    }
+    "blog-image": <"image-file">
 }
 
 ### Get all Blogs
@@ -72,14 +69,6 @@ GET {{api}}/blog?blog_id=65b132b4b29d880c58aae887
 DELETE {{api}}/blog/65b132b4b29d880c58aae887
 Authorization: Bearer {{token}}
 
-### upload blog Image
-POST {{api}}/blog/upload/image
-Content-Type: multipart/form-data
-Authorization: Bearer {{token}}
-
-{
-    "blogImage": "<image_file>"
-}
 
 ### Edit blog
 PATCH  {{api}}/blog/update/65afb187ef36a9f83fdd05b5
@@ -106,20 +95,17 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-    "projectTitle": "aseddfg",
-  "projectSubtitle": "vvvvvvvfv",
-  "projectDescription": "oooooo",
-  "projectOverview": "ppppeesppp",
-  "problem": "lllllwsll",
+    "projectTitle": "eddfg",
+  "projectSubtitle": "vvvvvfv",
+  "projectDescription": "oor3woo",
+  "projectOverview": "ppdgeesppp",
+  "problem": "llllsll",
   "solution": "zsss",
   "clientName": "zwed",
   "projectTimeline": "oooo",
   "projectCategory": "ppppp",
   "servicesProvides": "nnnn",
-  "coverPhoto": {
-    "imageId": "sprinters/ec90aab48e9c60f9",
-    "imageUrl": "https://res.cloudinary.com/dprg3f2vd/image/upload/v1706014500/sprinters/ec90aab48e9c60f9.jpg"
-  }
+  "cover-photo": <"image-file">
 }
 
 ### Edit case study
@@ -138,10 +124,8 @@ Authorization: Bearer {{token}}
   "projectTimeline": "z.string()",
   "projectCategory": "z.string()",
   "servicesProvides": "z.string()",
-  "coverPhoto": {
-    "imageId": "sprinters/ec90aab48e9c60f9",
-    "imageUrl": "https://res.cloudinary.com/dprg3f2vd/image/upload/v1706014500/sprinters/ec90aab48e9c60f9.jpg"
-  }
+  "cover-photo": <"image-file">.
+"imageId": "sprinters/ec90aab48e9c60f9",
 }
 
 
@@ -155,13 +139,5 @@ GET {{api}}/case-study?caseStudyId=65b13373b29d880c58aae899
 DELETE {{api}}/case-study/65b13373b29d880c58aae899
 Authorization: Bearer {{token}}
 
-### upload case study cover letter
-POST {{api}}/case-study/upload/image
-Content-Type: multipart/form-data
-Authorization: Bearer {{token}}
-
-{
-    "cover-photo": "<image_file>"
-}
 
 ###Todo remove delete blog from cloudinary after blog has been deleted

@@ -8,6 +8,11 @@ export interface IRequest extends Request {
   userAuth?: IAuth;
   decoded?: IToken;
   ref?: string;
+  imageId?: string;
+  imageDetails?: {
+    imageId: string;
+    imageUrl: string;
+  };
 }
 
 export interface IToken {
