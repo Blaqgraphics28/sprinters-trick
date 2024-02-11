@@ -47,8 +47,8 @@ const initializeMiddlewares = () => {
 
   app
     .use(cors(corsOptions))
-    .use(express.json({ limit: "50kb" }))
-    .use(express.urlencoded({ limit: "50kb", extended: false }))
+    .use(express.json())
+    .use(express.urlencoded({ extended: true }))
     .use(helmet())
     .use((err: any, req: Request, res: Response, next: NextFunction) => {
       if (req.method === "OPTIONS") {
