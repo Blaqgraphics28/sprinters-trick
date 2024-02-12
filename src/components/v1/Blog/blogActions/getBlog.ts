@@ -17,11 +17,12 @@ export const getBlog = async (req: IRequest, res: Response) => {
       Blog = await BlogModel.findOne({ _id: blog_id });
       if (!Blog)
         return handleResponse({ res, status: 400, message: "Blog not found" });
+        const otherBlogs = await BlogModel.find({ _id: { $ne: blog_id } });
 
       return handleResponse({
         res,
         message: "success",
-        data: Blog,
+        data: {Blog, otherBlogs},
       });
     }
 

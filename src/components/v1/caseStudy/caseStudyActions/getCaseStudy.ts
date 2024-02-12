@@ -18,14 +18,19 @@ const getCaseStudy = async (req: IRequest, res: Response) => {
           status: 400,
         });
 
+        const otherCasestudy = await CaseStudyModel.find({ _id: {$ne: caseStudyId}})
+
+
+
       return handleResponse({
         res,
         message: "Success",
-        data: caseStudy,
+        data: {caseStudy,  otherCasestudy},
       });
     }
 
     caseStudy = await CaseStudyModel.find();
+
     return handleResponse({
       res,
       message: "Success",
