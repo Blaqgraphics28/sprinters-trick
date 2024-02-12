@@ -22,7 +22,7 @@ router.post(
   validateToken,
   requireAuth,
   grantAccess(["admin"]),
-  upload.single("cover-photo"),
+  upload.single("cover_photo"),
   uploadImageMiddleware,
   createCaseStudy
 );
@@ -33,7 +33,7 @@ router.patch(
   validateToken,
   requireAuth,
   grantAccess(["admin"]),
-  upload.single("cover-photo"),
+  upload.single("cover_photo"),
   uploadImageMiddleware,
   editCaseStudy
 );

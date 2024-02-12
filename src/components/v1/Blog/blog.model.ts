@@ -1,6 +1,7 @@
 import { model, Schema, Types } from "mongoose";
 
 interface IBlog extends Document {
+  authorName: string;
   description: string;
   title: string;
   image: { imageId: string; imageUrl: string };
@@ -11,6 +12,7 @@ interface IBlog extends Document {
 
 const blogSchema = new Schema<IBlog>(
   {
+    authorName: String,
     description: String,
     title: String,
     image: { imageId: String, imageUrl: String },

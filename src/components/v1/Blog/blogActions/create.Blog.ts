@@ -14,14 +14,14 @@ const createBlog = async (req: IRequest, res: Response) => {
     content,
   }: z.infer<typeof createBlogSchema> = req.body;
 
-  const { imageDetails } = req;
+  const { imageDetails, user } = req;
   let Blog;
   try {
     Blog = await new BlogModel({
+      authorName: `${user?.firstName} ${user?.lastName}`,
       description,
       title,
       image: imageDetails,
-      // tags,
       tags: [tags],
       content,
     }).save();

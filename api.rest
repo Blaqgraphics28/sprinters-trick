@@ -1,6 +1,6 @@
-# @server = http://127.0.0.1:6080
+@server = http://127.0.0.1:6080
 
-@server = https://sprinters-api.onrender.com
+# @server = https://sprinters-api.onrender.com
 
 
 @api = {{server}}/v1
@@ -56,7 +56,7 @@ Authorization: Bearer {{token}}
     "description": "Buopb",
     "tags": ["egba", "rghjkue"],
     "content": "oerc",
-    "blog-image": <"image-file">
+    "blog_image": <"image-file">
 }
 
 ### Get all Blogs
@@ -80,10 +80,7 @@ Content-Type: application/json
     "description": "Buthopb",
     "tags": ["egboa", "rghsjkue"],
     "content": "opwerc",
-    "image": {
-        "imageId": "sprinters/b4129df28e55301c",
-        "imageUrl": "https://res.cloudinary.com/dprg3f2vd/image/upload/v1706013508/sprinters/b4129df28e55301c.jpg"
-    }
+   "blog_image": <"image-file">
 }
 
 
@@ -105,7 +102,7 @@ Authorization: Bearer {{token}}
   "projectTimeline": "oooo",
   "projectCategory": "ppppp",
   "servicesProvides": "nnnn",
-  "cover-photo": <"image-file">
+  "cover_photo": <"image-file">
 }
 
 ### Edit case study
@@ -124,7 +121,7 @@ Authorization: Bearer {{token}}
   "projectTimeline": "z.string()",
   "projectCategory": "z.string()",
   "servicesProvides": "z.string()",
-  "cover-photo": <"image-file">.
+  "cover_photo": <"image-file">.
 "imageId": "sprinters/ec90aab48e9c60f9",
 }
 

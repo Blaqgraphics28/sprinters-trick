@@ -3,15 +3,11 @@ import { IRequest } from "../../../../types";
 import { z } from "zod";
 import { handleResponse } from "../../../../utils/response";
 import { BlogModel } from "../blog.model";
-import { createBlogSchema } from "../blog.policies";
+import { editBlogSchema } from "../blog.policies";
 
 const editBlog = async (req: IRequest, res: Response) => {
-  const {
-    description,
-    title,
-    tags,
-    content,
-  }: z.infer<typeof createBlogSchema> = req.body;
+  const { description, title, tags, content }: z.infer<typeof editBlogSchema> =
+    req.body;
   const { blogId } = req.params;
 
   const { imageDetails } = req;

@@ -19,7 +19,7 @@ router.post(
   validateToken,
   requireAuth,
   grantAccess(["admin"]),
-  upload.single("blog-image"),
+  upload.single("blog_image"),
   uploadImageMiddleware,
   createBlog
 );
@@ -30,7 +30,7 @@ router.patch(
   validateToken,
   requireAuth,
   grantAccess(["admin"]),
-  upload.single("blog-image"),
+  upload.single("blog_image"),
   uploadImageMiddleware,
   editBlog
 );
