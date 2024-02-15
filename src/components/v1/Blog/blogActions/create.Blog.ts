@@ -17,20 +17,20 @@ const createBlog = async (req: IRequest, res: Response) => {
   const { imageDetails, user } = req;
   let Blog;
   try {
-    Blog = await new BlogModel({
-      authorName: `${user?.firstName} ${user?.lastName}`,
-      description,
-      title,
-      image: imageDetails,
-      tags: [tags],
-      content,
-    }).save();
+    // Blog = await new BlogModel({
+    //   authorName: `${user?.firstName} ${user?.lastName}`,
+    //   description,
+    //   title,
+    //   image: imageDetails,
+    //   tags: [tags],
+    //   content,
+    // }).save();
 
     return handleResponse({
       res,
       status: 201,
       message: "blog created successfully",
-      data: Blog,
+      data: "Blog",
     });
   } catch (err: any) {
     return handleResponse({

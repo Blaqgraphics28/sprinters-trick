@@ -2,6 +2,7 @@ import cors from "cors";
 import express, { Application, NextFunction, Response, Request } from "express";
 import helmet from "helmet";
 import appConfig from ".";
+import { upload } from "./fileUpload.config";
 
 import { connectMongoDb } from "./persistence/database";
 import { handleResponse } from "../utils/response";
@@ -47,8 +48,8 @@ const initializeMiddlewares = () => {
 
   app
     .use(cors(corsOptions))
-    .use(express.json())
-    .use(express.urlencoded({ extended: true }))
+    .use(upload.any())
+    .use(express.urlencoded({ extended: false }))
     .use(helmet())
     .use((err: any, req: Request, res: Response, next: NextFunction) => {
       if (req.method === "OPTIONS") {
@@ -71,6 +72,7 @@ const initializeMiddlewares = () => {
 
       return next();
     })
+    // .use(express.json())
     .use((req: IRequest, res: Response, next: NextFunction) => {
       v2.config({
         cloud_name: cloudName,

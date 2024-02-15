@@ -15,7 +15,7 @@ const router = Router();
 
 router.post(
   "/",
-  policyMiddleware(createBlogSchema),
+  // policyMiddleware(createBlogSchema),
   validateToken,
   requireAuth,
   grantAccess(["admin"]),
