@@ -80,7 +80,8 @@ Content-Type: application/json
     "description": "Buthopb",
     "tags": ["egboa", "rghsjkue"],
     "content": "opwerc",
-   "blog_image": <"image-file">
+    "blog-image": <"image-file">,
+    "imageId": "sprinters/b4129df28e55301c"
 }
 
 
@@ -92,7 +93,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}}
 
 {
-    "projectTitle": "eddfg",
+  "projectTitle": "eddfg",
   "projectSubtitle": "vvvvvfv",
   "projectDescription": "oor3woo",
   "projectOverview": "ppdgeesppp",
