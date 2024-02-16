@@ -16,14 +16,14 @@ const caseStudy_model_1 = __importDefault(require("../caseStudy.model"));
 const response_1 = require("../../../../utils/response");
 const cloudinary_1 = require("cloudinary");
 const deleteCaseStudy = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { caseStudyId, imageId } = req.params;
+    const { caseStudyId, imageId } = req.query;
     try {
         if (!imageId)
             return (0, response_1.handleResponse)({
                 res,
                 message: "please provide image id",
             });
-        const ImageId = imageId.replace("sprinters/", "");
+        const ImageId = String(imageId).replace("sprinters/", "");
         yield cloudinary_1.v2.uploader.destroy(ImageId, {
             resource_type: "image",
         });

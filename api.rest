@@ -5,7 +5,7 @@
 
 @api = {{server}}/v1
 
-@token= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWYiOiI2NWM0Y2U1ZWY0YmE3YmI2OGQ5ZDlmOWMiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MDc2MTA3NDgsImV4cCI6MTg4MDQxMDc0OCwiYXVkIjoid2ViLXVzZXIiLCJpc3MiOiJzcHJpbnRlcnMtZGV2ZWxvcG1lbnQifQ.L8Bq_7vfCEnIV9meQ_ociSIKO-fXzI0t7zzeOtVY2Aw
+@token= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWYiOiI2NWM5MjEzMWEwNDNhMWYxN2JiMzNiMDciLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MDgwNTA5NTksImV4cCI6MTg4MDg1MDk1OSwiYXVkIjoid2ViLXVzZXIiLCJpc3MiOiJzcHJpbnRlcnMtZGV2ZWxvcG1lbnQifQ.ITWfDg1EAdzVQbaB6SzBLO2oSBURN1hy9EMgPlnYwnA
 
 ###
 GET {{server}}
@@ -63,15 +63,15 @@ Authorization: Bearer {{token}}
 GET {{api}}/blog
 
 ### Get blog by Id
-GET {{api}}/blog?blog_id=65b132b4b29d880c58aae887
+GET {{api}}/blog?blog_id=65cecfadab2e0eee686e3407
 
-### delete Blog
-DELETE {{api}}/blog/65b132b4b29d880c58aae887
+### delete Blog {{api}}/blog?blogId=65cecfadab2e0eee686e3407&imageId=65cecfadab2e0eee686e3407
+DELETE {{api}}/blog?blogId=65cecfadab2e0eee686e3407&imagId=sprinters/247539f9e7e1261f
 Authorization: Bearer {{token}}
 
 
 ### Edit blog
-PATCH  {{api}}/blog/update/65afb187ef36a9f83fdd05b5
+PATCH  {{api}}/blog/update
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -80,8 +80,9 @@ Content-Type: application/json
     "description": "Buthopb",
     "tags": ["egboa", "rghsjkue"],
     "content": "opwerc",
-    "blog-image": <"image-file">,
-    "imageId": "sprinters/b4129df28e55301c"
+    "blog_image": <"image-file">,
+    "imageId": "sprinters/b4129df28e55301c",
+    "blogId": "65cecb372fbee4c234aef9a9"
 }
 
 
@@ -123,7 +124,7 @@ Authorization: Bearer {{token}}
   "projectCategory": "z.string()",
   "servicesProvides": "z.string()",
   "cover_photo": <"image-file">.
-"imageId": "sprinters/ec90aab48e9c60f9",
+  "imageId": "sprinters/b70d1cf966076a0b"
 }
 
 
@@ -134,7 +135,7 @@ GET {{api}}/case-study
 GET {{api}}/case-study?caseStudyId=65b13373b29d880c58aae899
 
 ### delete case study
-DELETE {{api}}/case-study/65b13373b29d880c58aae899
+DELETE {{api}}/case-study?caseStudyId=65ced7ad513bee5e25aa29ff&imageId=sprinters/59b100d39fe7ba12
 Authorization: Bearer {{token}}
 
 

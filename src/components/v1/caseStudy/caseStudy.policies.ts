@@ -25,4 +25,5 @@ export const editCaseStudySchema = z.object({
   projectCategory: z.string(),
   servicesProvides: z.string(),
   imageId: z.string(),
+  caseStudyId: z.string(),
 });

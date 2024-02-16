@@ -48,7 +48,7 @@ const initializeMiddlewares = () => {
 
   app
     .use(cors(corsOptions))
-    .use(upload.any())
+    // .use(upload.any())
     .use(express.urlencoded({ extended: false }))
     .use(helmet())
     .use((err: any, req: Request, res: Response, next: NextFunction) => {
@@ -72,7 +72,7 @@ const initializeMiddlewares = () => {
 
       return next();
     })
-    // .use(express.json())
+    .use(express.json())
     .use((req: IRequest, res: Response, next: NextFunction) => {
       v2.config({
         cloud_name: cloudName,

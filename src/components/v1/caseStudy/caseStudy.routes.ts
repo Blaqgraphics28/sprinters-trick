@@ -18,33 +18,32 @@ const router = Router();
 
 router.post(
   "/",
+  upload.single("cover_photo"),
   policyMiddleware(createCaseStudySchema),
   validateToken,
   requireAuth,
   grantAccess(["admin"]),
-  upload.single("cover_photo"),
   uploadImageMiddleware,
   createCaseStudy
 );
 router.get("/", getCaseStudy);
 router.patch(
-  "/update/:id",
+  "/update",
+  upload.single("cover_photo"),
   policyMiddleware(editCaseStudySchema),
   validateToken,
   requireAuth,
   grantAccess(["admin"]),
-  upload.single("cover_photo"),
   uploadImageMiddleware,
   editCaseStudy
 );
 router.delete(
-  "/:caseStudyId/:caseStudyId/:imageId",
+  "/",
   validateToken,
   requireAuth,
   grantAccess(["admin"]),
   deleteCaseStudy
 );
-
 
 const caseStudyRouter = router;
 export default caseStudyRouter;

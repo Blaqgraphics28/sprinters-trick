@@ -5,10 +5,10 @@ import { BlogModel } from "../blog.model";
 import { v2 } from "cloudinary";
 
 export const deleteBlog = async (req: IRequest, res: Response) => {
-  const { blogId, imageId } = req.params;
+  const { blogId, imageId } = req.query;
 
   try {
-    const ImageId = imageId.replace("sprinters/", "");
+    const ImageId = String(imageId).replace("sprinters/", "");
     await v2.uploader
       .destroy(ImageId, {
         resource_type: "image",

@@ -26,5 +26,6 @@ exports.editCaseStudySchema = zod_1.z.object({
     projectCategory: zod_1.z.string(),
     servicesProvides: zod_1.z.string(),
     imageId: zod_1.z.string(),
+    caseStudyId: zod_1.z.string(),
 });
 //# sourceMappingURL=caseStudy.policies.js.map

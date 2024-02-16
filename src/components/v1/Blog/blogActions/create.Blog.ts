@@ -14,6 +14,7 @@ const createBlog = async (req: IRequest, res: Response) => {
     content,
   }: z.infer<typeof createBlogSchema> = req.body;
 
+
   const { user } = req;
   const { imageDetails } = req;
   let Blog;
@@ -23,7 +24,7 @@ const createBlog = async (req: IRequest, res: Response) => {
       description,
       title,
       image: imageDetails,
-      tags: [tags],
+      tags,
       content,
     }).save();
 
@@ -31,7 +32,7 @@ const createBlog = async (req: IRequest, res: Response) => {
       res,
       status: 201,
       message: "blog created successfully",
-      data: "Blog",
+      data: Blog,
     });
   } catch (err: any) {
     return handleResponse({
