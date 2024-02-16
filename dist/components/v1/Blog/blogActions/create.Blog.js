@@ -13,15 +13,16 @@ const response_1 = require("../../../../utils/response");
 const blog_model_1 = require("../blog.model");
 const createBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { description, title, tags, content, } = req.body;
+    const { user } = req;
     const { imageDetails } = req;
     let Blog;
     try {
         Blog = yield new blog_model_1.BlogModel({
+            authorName: `${user === null || user === void 0 ? void 0 : user.firstName} ${user === null || user === void 0 ? void 0 : user.lastName}`,
             description,
             title,
             image: imageDetails,
-            // tags,
-            tags: [tags],
+            tags,
             content,
         }).save();
         return (0, response_1.handleResponse)({

@@ -6,7 +6,7 @@ import { handleResponse } from "../../../../utils/response";
 import { v2 } from "cloudinary";
 
 const deleteCaseStudy = async (req: IRequest, res: Response) => {
-  const { caseStudyId, imageId } = req.params;
+  const { caseStudyId, imageId } = req.query;
 
   try {
     if (!imageId)
@@ -15,7 +15,7 @@ const deleteCaseStudy = async (req: IRequest, res: Response) => {
         message: "please provide image id",
       });
 
-    const ImageId = imageId.replace("sprinters/", "");
+    const ImageId = String(imageId).replace("sprinters/", "");
     await v2.uploader.destroy(ImageId, {
       resource_type: "image",
     });

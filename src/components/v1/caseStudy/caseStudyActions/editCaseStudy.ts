@@ -18,9 +18,9 @@ const editCaseStudy = async (req: IRequest, res: Response) => {
     projectTimeline,
     projectCategory,
     servicesProvides,
+    caseStudyId: id,
   }: z.infer<typeof editCaseStudySchema> = req.body;
-  const Id = z.object({ id: z.string().optional() });
-  const { id }: z.infer<typeof Id> = req.params;
+
   let caseStudy;
   try {
     const { imageDetails } = req;

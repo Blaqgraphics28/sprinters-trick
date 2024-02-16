@@ -16,10 +16,10 @@ const hasPermission_1 = __importDefault(require("../../../appMiddlewares/hasPerm
 const editCaseStudy_1 = __importDefault(require("./caseStudyActions/editCaseStudy"));
 const imgeUpload_1 = require("../../../appMiddlewares/imgeUpload");
 const router = (0, express_1.Router)();
-router.post("/", (0, policy_middlewares_1.default)(caseStudy_policies_1.createCaseStudySchema), validateToken_1.default, requireAuth_1.default, (0, hasPermission_1.default)(["admin"]), fileUpload_config_1.upload.single("cover-photo"), imgeUpload_1.uploadImageMiddleware, createCaseStudy_1.default);
+router.post("/", fileUpload_config_1.upload.single("cover_photo"), (0, policy_middlewares_1.default)(caseStudy_policies_1.createCaseStudySchema), validateToken_1.default, requireAuth_1.default, (0, hasPermission_1.default)(["admin"]), imgeUpload_1.uploadImageMiddleware, createCaseStudy_1.default);
 router.get("/", getCaseStudy_1.default);
-router.patch("/update/:id", (0, policy_middlewares_1.default)(caseStudy_policies_1.editCaseStudySchema), validateToken_1.default, requireAuth_1.default, (0, hasPermission_1.default)(["admin"]), fileUpload_config_1.upload.single("cover-photo"), imgeUpload_1.uploadImageMiddleware, editCaseStudy_1.default);
-router.delete("/:caseStudyId/:caseStudyId/:imageId", validateToken_1.default, requireAuth_1.default, (0, hasPermission_1.default)(["admin"]), deleteCaseStudy_1.default);
+router.patch("/update", fileUpload_config_1.upload.single("cover_photo"), (0, policy_middlewares_1.default)(caseStudy_policies_1.editCaseStudySchema), validateToken_1.default, requireAuth_1.default, (0, hasPermission_1.default)(["admin"]), imgeUpload_1.uploadImageMiddleware, editCaseStudy_1.default);
+router.delete("/", validateToken_1.default, requireAuth_1.default, (0, hasPermission_1.default)(["admin"]), deleteCaseStudy_1.default);
 const caseStudyRouter = router;
 exports.default = caseStudyRouter;
 //# sourceMappingURL=caseStudy.routes.js.map

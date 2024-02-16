@@ -26,10 +26,11 @@ const getCaseStudy = (req, res) => __awaiter(void 0, void 0, void 0, function* (
                     message: "case study not found",
                     status: 400,
                 });
+            const otherCasestudy = yield caseStudy_model_1.default.find({ _id: { $ne: caseStudyId } });
             return (0, response_1.handleResponse)({
                 res,
                 message: "Success",
-                data: caseStudy,
+                data: { caseStudy, otherCasestudy },
             });
         }
         caseStudy = yield caseStudy_model_1.default.find();

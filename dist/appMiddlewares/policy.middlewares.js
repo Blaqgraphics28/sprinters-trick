@@ -3,7 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const response_1 = require("../utils/response");
 const policyMiddleware = (schema, fieldType = "body") => (req, res, next) => {
     try {
-        console.log(req.body);
         let parsedData;
         if (fieldType === "body") {
             parsedData = schema.parse(req.body);

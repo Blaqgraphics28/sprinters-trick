@@ -15,33 +15,32 @@ const router = Router();
 
 router.post(
   "/",
-  // policyMiddleware(createBlogSchema),
+  upload.single("blog_image"),
+  policyMiddleware(createBlogSchema),
   validateToken,
   requireAuth,
   grantAccess(["admin"]),
-  upload.single("blog_image"),
   uploadImageMiddleware,
   createBlog
 );
 router.get("/", getBlog);
 router.patch(
   "/update",
+  upload.single("blog_image"),
   policyMiddleware(editBlogSchema),
   validateToken,
   requireAuth,
   grantAccess(["admin"]),
-  upload.single("blog_image"),
   uploadImageMiddleware,
   editBlog
 );
 router.delete(
-  "/:blogId/:imageId",
+  "/",
   validateToken,
   requireAuth,
   grantAccess(["admin"]),
   deleteBlog
 );
-
 
 const blogRouter = router;
 export default blogRouter;

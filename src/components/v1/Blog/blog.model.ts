@@ -1,7 +1,7 @@
 import { model, Schema, Types } from "mongoose";
 
 interface IBlog extends Document {
-  authorName: string;
+  authorName: string
   description: string;
   title: string;
   image: { imageId: string; imageUrl: string };

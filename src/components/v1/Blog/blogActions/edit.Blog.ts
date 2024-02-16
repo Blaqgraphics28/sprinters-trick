@@ -6,9 +6,13 @@ import { BlogModel } from "../blog.model";
 import { editBlogSchema } from "../blog.policies";
 
 const editBlog = async (req: IRequest, res: Response) => {
-  const { description, title, tags, content }: z.infer<typeof editBlogSchema> =
-    req.body;
-  const { blogId } = req.params;
+  const {
+    description,
+    title,
+    tags,
+    content,
+    blogId,
+  }: z.infer<typeof editBlogSchema> = req.body;
 
   const { imageDetails } = req;
   try {

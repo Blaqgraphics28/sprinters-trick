@@ -51,8 +51,8 @@ const initializeMiddlewares = () => {
     };
     app
         .use((0, cors_1.default)(corsOptions))
-        .use(express_1.default.json())
-        .use(express_1.default.urlencoded({ extended: true }))
+        // .use(upload.any())
+        .use(express_1.default.urlencoded({ extended: false }))
         .use((0, helmet_1.default)())
         .use((err, req, res, next) => {
         if (req.method === "OPTIONS") {
@@ -70,6 +70,7 @@ const initializeMiddlewares = () => {
         }
         return next();
     })
+        .use(express_1.default.json())
         .use((req, res, next) => {
         cloudinary_1.v2.config({
             cloud_name: cloudName,

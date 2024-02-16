@@ -18,14 +18,16 @@ const getBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { blog_id } = blogIdSchema.parse(req.query);
     let Blog;
     try {
+        console.log(blog_id);
         if (blog_id) {
             Blog = yield blog_model_1.BlogModel.findOne({ _id: blog_id });
             if (!Blog)
                 return (0, response_1.handleResponse)({ res, status: 400, message: "Blog not found" });
+            const otherBlogs = yield blog_model_1.BlogModel.find({ _id: { $ne: blog_id } });
             return (0, response_1.handleResponse)({
                 res,
                 message: "success",
-                data: Blog,
+                data: { Blog, otherBlogs },
             });
         }
         Blog = yield blog_model_1.BlogModel.find();

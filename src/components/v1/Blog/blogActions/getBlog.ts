@@ -13,6 +13,7 @@ export const getBlog = async (req: IRequest, res: Response) => {
   );
   let Blog;
   try {
+    console.log(blog_id)
     if (blog_id) {
       Blog = await BlogModel.findOne({ _id: blog_id });
       if (!Blog)

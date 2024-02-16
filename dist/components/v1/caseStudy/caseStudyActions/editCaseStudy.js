@@ -13,12 +13,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const response_1 = require("../../../../utils/response");
-const zod_1 = require("zod");
 const caseStudy_model_1 = __importDefault(require("../caseStudy.model"));
 const editCaseStudy = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { projectTitle, projectSubtitle, projectDescription, projectOverview, problem, solution, clientName, projectTimeline, projectCategory, servicesProvides, } = req.body;
-    const Id = zod_1.z.object({ id: zod_1.z.string().optional() });
-    const { id } = req.params;
+    const { projectTitle, projectSubtitle, projectDescription, projectOverview, problem, solution, clientName, projectTimeline, projectCategory, servicesProvides, caseStudyId: id, } = req.body;
     let caseStudy;
     try {
         const { imageDetails } = req;
