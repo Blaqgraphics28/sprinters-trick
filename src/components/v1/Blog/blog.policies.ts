@@ -5,6 +5,7 @@ export const createBlogSchema = z.object({
   tags: z.array(z.string()),
   content: z.string(),
   description: z.string(),
+  authorName: z.string(), //just added
 });
 
 export const editBlogSchema = z.object({
@@ -12,6 +13,7 @@ export const editBlogSchema = z.object({
   title: z.string(),
   tags: z.array(z.string()),
   content: z.string(),
+  authorName: z.string(),
   imageId: z.string(),
   blogId: z.string()
 });

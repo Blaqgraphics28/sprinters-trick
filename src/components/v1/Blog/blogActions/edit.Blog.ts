@@ -12,6 +12,7 @@ const editBlog = async (req: IRequest, res: Response) => {
     tags,
     content,
     blogId,
+    authorName
   }: z.infer<typeof editBlogSchema> = req.body;
 
   const { imageDetails } = req;
@@ -32,6 +33,7 @@ const editBlog = async (req: IRequest, res: Response) => {
           image: imageDetails,
           tags,
           content,
+          authorName
         },
       },
       { new: true }

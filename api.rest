@@ -82,7 +82,8 @@ Content-Type: application/json
     "content": "opwerc",
     "blog_image": <"image-file">,
     "imageId": "sprinters/b4129df28e55301c",
-    "blogId": "65cecb372fbee4c234aef9a9"
+    "blogId": "65cecb372fbee4c234aef9a9",
+    "authorName": "string string"
 }
 
 

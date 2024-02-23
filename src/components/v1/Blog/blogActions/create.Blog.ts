@@ -12,6 +12,7 @@ const createBlog = async (req: IRequest, res: Response) => {
     title,
     tags,
     content,
+    authorName
   }: z.infer<typeof createBlogSchema> = req.body;
 
 
@@ -20,7 +21,7 @@ const createBlog = async (req: IRequest, res: Response) => {
   let Blog;
   try {
     Blog = await new BlogModel({
-      authorName: `${user?.firstName} ${user?.lastName}`,
+      authorName ,
       description,
       title,
       image: imageDetails,

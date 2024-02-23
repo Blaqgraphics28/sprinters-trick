@@ -1,4 +1,6 @@
 "use strict";
+// import { Request, Response } from "express";
+// import { z } from "zod";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -8,9 +10,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const mailchimp_marketing_1 = __importDefault(require("@mailchimp/mailchimp_marketing"));
 const user_model_1 = require("../user.model");
 const response_1 = require("../../../../utils/response");
+mailchimp_marketing_1.default.setConfig({
+    apiKey: process.env.SPRINTERS_MAILCHIMP_KEY,
+    server: process.env.MAILCHIMP_SERVER
+});
 const subscribeToNewsletter = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email } = req.body;
     try {
@@ -23,9 +33,18 @@ const subscribeToNewsletter = (req, res) => __awaiter(void 0, void 0, void 0, fu
             });
         }
         yield new user_model_1.NewsletterModel({ email }).save();
+        const audienceId = process.env.MAILCHIMP_AUDIENCEID;
+        if (!audienceId) {
+            throw new Error("MAILCHIMP_AUDIENCEID environment variable is not defined");
+        }
+        // Add subscriber to Mailchimp audience
+        const response = yield mailchimp_marketing_1.default.lists.addListMember(audienceId, {
+            email_address: email,
+            status: 'subscribed',
+        });
         return (0, response_1.handleResponse)({
             res,
-            message: "subscribed to newsletter successfully",
+            message: "Subscribed to newsletter successfully",
         });
     }
     catch (err) {

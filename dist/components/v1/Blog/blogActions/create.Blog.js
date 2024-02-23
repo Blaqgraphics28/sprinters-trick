@@ -12,13 +12,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const response_1 = require("../../../../utils/response");
 const blog_model_1 = require("../blog.model");
 const createBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { description, title, tags, content, } = req.body;
+    const { description, title, tags, content, authorName } = req.body;
     const { user } = req;
     const { imageDetails } = req;
     let Blog;
     try {
         Blog = yield new blog_model_1.BlogModel({
-            authorName: `${user === null || user === void 0 ? void 0 : user.firstName} ${user === null || user === void 0 ? void 0 : user.lastName}`,
+            authorName,
             description,
             title,
             image: imageDetails,
