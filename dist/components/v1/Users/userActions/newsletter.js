@@ -18,9 +18,10 @@ const mailchimp_marketing_1 = __importDefault(require("@mailchimp/mailchimp_mark
 const user_model_1 = require("../user.model");
 const response_1 = require("../../../../utils/response");
 mailchimp_marketing_1.default.setConfig({
-    apiKey: process.env.SPRINTERS_MAILCHIMP_KEY,
-    server: process.env.MAILCHIMP_SERVER
+    apiKey: process.env.MAILCHIMP_API_KEY,
+    server: process.env.MAILCHIMP_SERVER_PREFIX
 });
+console.log(process.env.MAILCHIMP_API_KEY, process.env.MAILCHIMP_SERVER_PREFIX);
 const subscribeToNewsletter = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email } = req.body;
     try {

@@ -44,9 +44,12 @@ import { handleResponse } from "../../../../utils/response";
 import { newsletterSchema } from "../user.policies";
 
 mailchimp.setConfig({
-  apiKey: process.env.SPRINTERS_MAILCHIMP_KEY,
-  server: process.env.MAILCHIMP_SERVER
+  apiKey: process.env.MAILCHIMP_API_KEY,
+  server: process.env.MAILCHIMP_SERVER_PREFIX
 });
+
+console.log(process.env.MAILCHIMP_API_KEY, process.env.MAILCHIMP_SERVER_PREFIX);
+
 
 
 
