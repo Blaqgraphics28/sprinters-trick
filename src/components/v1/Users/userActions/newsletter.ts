@@ -48,7 +48,6 @@ mailchimp.setConfig({
   server: process.env.MAILCHIMP_SERVER_PREFIX
 });
 
-console.log(process.env.MAILCHIMP_API_KEY, process.env.MAILCHIMP_SERVER_PREFIX);
 
 
 
