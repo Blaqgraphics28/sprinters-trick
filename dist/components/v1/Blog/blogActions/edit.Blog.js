@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const response_1 = require("../../../../utils/response");
 const blog_model_1 = require("../blog.model");
 const editBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { description, title, tags, content, blogId, authorName } = req.body;
+    const { description, destination, title, tags, content, blogId, authorName } = req.body;
     const { imageDetails } = req;
     try {
         if (!blogId)
@@ -28,6 +28,7 @@ const editBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                 image: imageDetails,
                 tags,
                 content,
+                destination,
                 authorName
             },
         }, { new: true });

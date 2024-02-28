@@ -5,6 +5,7 @@ const zod_1 = require("zod");
 exports.createBlogSchema = zod_1.z.object({
     title: zod_1.z.string(),
     tags: zod_1.z.array(zod_1.z.string()),
+    destination: zod_1.z.string(),
     content: zod_1.z.string(),
     description: zod_1.z.string(),
     authorName: zod_1.z.string(), //just added
@@ -12,6 +13,7 @@ exports.createBlogSchema = zod_1.z.object({
 exports.editBlogSchema = zod_1.z.object({
     description: zod_1.z.string(),
     title: zod_1.z.string(),
+    destination: zod_1.z.string(),
     tags: zod_1.z.array(zod_1.z.string()),
     content: zod_1.z.string(),
     authorName: zod_1.z.string(),

@@ -9,6 +9,7 @@ import { BlogModel } from "../blog.model";
 const createBlog = async (req: IRequest, res: Response) => {
   const {
     description,
+    destination,
     title,
     tags,
     content,
@@ -24,6 +25,7 @@ const createBlog = async (req: IRequest, res: Response) => {
       authorName ,
       description,
       title,
+      destination,
       image: imageDetails,
       tags,
       content,

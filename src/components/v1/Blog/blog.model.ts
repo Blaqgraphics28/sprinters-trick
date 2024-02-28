@@ -3,6 +3,7 @@ import { model, Schema, Types } from "mongoose";
 interface IBlog extends Document {
   authorName: string
   description: string;
+  destination: string,
   title: string;
   image: { imageId: string; imageUrl: string };
   tags: string[];
@@ -14,6 +15,7 @@ const blogSchema = new Schema<IBlog>(
   {
     authorName: String,
     description: String,
+    destination: String,
     title: String,
     image: { imageId: String, imageUrl: String },
     tags: [String],

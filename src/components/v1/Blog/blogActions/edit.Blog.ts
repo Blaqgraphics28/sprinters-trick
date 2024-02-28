@@ -8,6 +8,7 @@ import { editBlogSchema } from "../blog.policies";
 const editBlog = async (req: IRequest, res: Response) => {
   const {
     description,
+    destination,
     title,
     tags,
     content,
@@ -33,6 +34,7 @@ const editBlog = async (req: IRequest, res: Response) => {
           image: imageDetails,
           tags,
           content,
+          destination,
           authorName
         },
       },
