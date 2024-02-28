@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getIntouchSchema = void 0;
+exports.newsletterSchema = exports.getIntouchSchema = void 0;
 const zod_1 = require("zod");
 const helpers_1 = require("../../../utils/helpers");
 exports.getIntouchSchema = zod_1.z.object({
@@ -11,5 +11,8 @@ exports.getIntouchSchema = zod_1.z.object({
         message: "invalid",
     }),
     message: zod_1.z.string(),
+});
+exports.newsletterSchema = zod_1.z.object({
+    email: zod_1.z.string().email(),
 });
 //# sourceMappingURL=user.policies.js.map

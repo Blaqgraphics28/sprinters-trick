@@ -8,16 +8,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const response_1 = require("../../../../utils/response");
-const user_model_1 = __importDefault(require("../user.model"));
+const user_model_1 = require("../user.model");
 const getInTouch = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { firstName, lastName, email, phoneNo, message, } = req.body;
     try {
-        const user = yield new user_model_1.default({
+        const getInTouch = yield new user_model_1.GetIntouchModel({
             firstName,
             lastName,
             email,
@@ -28,7 +25,7 @@ const getInTouch = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         return (0, response_1.handleResponse)({
             res,
             message: "message sent successfully",
-            data: user,
+            data: getInTouch,
         });
     }
     catch (err) {

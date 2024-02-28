@@ -1,6 +1,11 @@
 @server = http://127.0.0.1:6080
 
+# @server = https://sprinters-api.onrender.com
+
+
 @api = {{server}}/v1
+
+@token= eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWYiOiI2NWM5MjEzMWEwNDNhMWYxN2JiMzNiMDciLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MDgwNTA5NTksImV4cCI6MTg4MDg1MDk1OSwiYXVkIjoid2ViLXVzZXIiLCJpc3MiOiJzcHJpbnRlcnMtZGV2ZWxvcG1lbnQifQ.ITWfDg1EAdzVQbaB6SzBLO2oSBURN1hy9EMgPlnYwnA
 
 ###
 GET {{server}}
@@ -8,22 +13,131 @@ GET {{server}}
 ### 
 GET {{api}}
 
+### Login
+POST {{api}}/auth/login
+Content-Type: application/json
+
+{
+    "email": "svfhbmwye@email.com",
+    "password": "a_Great-experiencE"
+}
+
 ### getIntouch
 POST {{api}}/users/get-in-touch
 Content-Type: application/json
 
 {
-    "firstName": "John",
-    "lastName": "Doe",
-    "email": "pokngeh@email.com",
-    "phoneNo": "+2347012893373",
-    "message": "Lorem ipseum tfh n"
+    "firstName": "Johnni",
+    "lastName": "Doree",
+    "email": "poknjgop@email.com",
+    "phoneNo": "+2347012898073",
+    "message": "Loremy ipseum tfh n"
 }
 
 ### subscribe to newsletter
 POST {{api}}/users/subscribe
 Content-Type: application/json
 
+
 {
-    "email": "amipsts@email.com"
+    "email": "amopsts@email.com"
 }
+
+
+#### =========== Blog ============
+
+### create Blog
+POST {{api}}/blog
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "title": "Abub",
+    "description": "Buopb",
+    "tags": ["egba", "rghjkue"],
+    "content": "oerc",
+    "blog_image": <"image-file">
+}
+
+### Get all Blogs
+GET {{api}}/blog
+
+### Get blog by Id
+GET {{api}}/blog?blog_id=65cecfadab2e0eee686e3407
+
+### delete Blog {{api}}/blog?blogId=65cecfadab2e0eee686e3407&imageId=65cecfadab2e0eee686e3407
+DELETE {{api}}/blog?blogId=65cecfadab2e0eee686e3407&imagId=sprinters/247539f9e7e1261f
+Authorization: Bearer {{token}}
+
+
+### Edit blog
+PATCH  {{api}}/blog/update
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "title": "Abubub",
+    "description": "Buthopb",
+    "tags": ["egboa", "rghsjkue"],
+    "content": "opwerc",
+    "blog_image": <"image-file">,
+    "imageId": "sprinters/b4129df28e55301c",
+    "blogId": "65cecb372fbee4c234aef9a9",
+    "authorName": "string string"
+}
+
+
+###### ====== case study ==========
+
+### create case study
+POST {{api}}/case-study
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "projectTitle": "eddfg",
+  "projectSubtitle": "vvvvvfv",
+  "projectDescription": "oor3woo",
+  "projectOverview": "ppdgeesppp",
+  "problem": "llllsll",
+  "solution": "zsss",
+  "clientName": "zwed",
+  "projectTimeline": "oooo",
+  "projectCategory": "ppppp",
+  "servicesProvides": "nnnn",
+  "cover_photo": <"image-file">
+}
+
+### Edit case study
+PATCH {{api}}/case-study/update/65b13373b29d880c58aae899
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "projectTitle": "asdf",
+  "projectSubtitle": "vvvvv",
+  "projectDescription": "oooo",
+  "projectOverview": "ppppp",
+  "problem": "lllll",
+  "solution": "z.string()",
+  "clientName": "z.string()",
+  "projectTimeline": "z.string()",
+  "projectCategory": "z.string()",
+  "servicesProvides": "z.string()",
+  "cover_photo": <"image-file">.
+  "imageId": "sprinters/b70d1cf966076a0b"
+}
+
+
+### get all case studies
+GET {{api}}/case-study
+
+### get case study
+GET {{api}}/case-study?caseStudyId=65b13373b29d880c58aae899
+
+### delete case study
+DELETE {{api}}/case-study?caseStudyId=65ced7ad513bee5e25aa29ff&imageId=sprinters/59b100d39fe7ba12
+Authorization: Bearer {{token}}
+
+
+###Todo remove delete blog from cloudinary after blog has been deleted

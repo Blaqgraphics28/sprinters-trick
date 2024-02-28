@@ -1,11 +1,11 @@
 import { Response } from "express";
-import { IReq } from "../../../../types";
+import { IRequest } from "../../../../types";
 import { z } from "zod";
 import { getIntouchSchema } from "../user.policies";
 import { handleResponse } from "../../../../utils/response";
 import { GetIntouchModel } from "../user.model";
 
-const getInTouch = async (req: IReq, res: Response) => {
+const getInTouch = async (req: IRequest, res: Response) => {
   const {
     firstName,
     lastName,
@@ -15,7 +15,8 @@ const getInTouch = async (req: IReq, res: Response) => {
   }: z.infer<typeof getIntouchSchema> = req.body;
 
   try {
-    const user = await new GetIntouchModel({
+
+    const getInTouch = await new GetIntouchModel({
       firstName,
       lastName,
       email,
@@ -27,7 +28,7 @@ const getInTouch = async (req: IReq, res: Response) => {
     return handleResponse({
       res,
       message: "message sent successfully",
-      data: user,
+      data: getInTouch,
     });
   } catch (err: any) {
     return handleResponse({

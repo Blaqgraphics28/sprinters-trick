@@ -1,13 +1,18 @@
 import { Router, Response } from "express";
 import { handleResponse } from "../../utils/response";
 import userRouter from "./Users/user.routes";
-import blogRouter from "./Users/blog.routes";
+import blogRouter from "./Blog/blog.routes";
+import caseStudyRouter from "./caseStudy/caseStudy.routes";
 import appConfig from "../../configs";
+import authRouter from "./Auth/auth.routes";
 
 const router = Router();
 
 router.use("/users", userRouter);
-router.use("/blog", blogRouter)
+router.use("/auth", authRouter);
+router.use("/blog", blogRouter);
+router.use("/case-study", caseStudyRouter);
+
 router.get("/", (_req, res: Response) => {
   handleResponse({
     res,
@@ -15,5 +20,5 @@ router.get("/", (_req, res: Response) => {
   });
 });
 
-const v2Routers = router;
-export default v2Routers;
+const v1Routers = router;
+export default v1Routers;

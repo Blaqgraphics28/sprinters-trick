@@ -1,0 +1,49 @@
+import { Response } from "express";
+import { z } from "zod";
+
+import { IRequest } from "../../../../types";
+import { handleResponse } from "../../../../utils/response";
+import CaseStudyModel from "../caseStudy.model";
+
+const getCaseStudy = async (req: IRequest, res: Response) => {
+  const { caseStudyId } = req.query;
+  let caseStudy;
+  try {
+    if (caseStudyId) {
+      caseStudy = await CaseStudyModel.findOne({ _id: String(caseStudyId) });
+      if (!caseStudy)
+        return handleResponse({
+          res,
+          message: "case study not found",
+          status: 400,
+        });
+
+        const otherCasestudy = await CaseStudyModel.find({ _id: {$ne: caseStudyId}})
+
+
+
+      return handleResponse({
+        res,
+        message: "Success",
+        data: {caseStudy,  otherCasestudy},
+      });
+    }
+
+    caseStudy = await CaseStudyModel.find();
+
+    return handleResponse({
+      res,
+      message: "Success",
+      data: caseStudy,
+    });
+  } catch (err: any) {
+    return handleResponse({
+      res,
+      err,
+      status: 500,
+      message: `Internal Server Error:  ${err.message}`,
+    });
+  }
+};
+
+export default getCaseStudy;

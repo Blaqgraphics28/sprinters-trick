@@ -2,21 +2,35 @@ import cors from "cors";
 import express, { Application, NextFunction, Response, Request } from "express";
 import helmet from "helmet";
 import appConfig from ".";
+import { upload } from "./fileUpload.config";
 
 import { connectMongoDb } from "./persistence/database";
 import { handleResponse } from "../utils/response";
 import v1Routers from "../components/v1/v1Routes";
+import { v2 } from "cloudinary";
+import { IRequest } from "src/types";
+import SEEDING from "./persistence/seeder";
+import sendMail from "./email/email.config";
 
 const app: Application = express();
+const { cloudName, cloudinaryApiKey, cloudinaryApiSecret } = appConfig;
 
-const initializePersistenceAndSeeding = () => {
+const initializePersistenceAndSeeding = async () => {
   connectMongoDb().catch((err: any) => console.log(err, "error"));
+  await SEEDING();
+  // await sendMail().then((e) => {
+  //   console.log("e  ", e);
+  // });
 };
 
 const initializeMiddlewares = () => {
   const allowedOrigins = [
-    `http://localhost:${appConfig.port}`,
-    `http://127.0.0.1:${appConfig.port}`,
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "http://localhost:3001",
+    "http://127.0.0.1:3001",
+    "https://sprinterstechnologies.com",
+    "https://sprinterz.netlify.app",
   ];
 
   const corsOptions = {
@@ -35,8 +49,8 @@ const initializeMiddlewares = () => {
 
   app
     .use(cors(corsOptions))
-    .use(express.json({ limit: "50kb" }))
-    .use(express.urlencoded({ limit: "50kb", extended: false }))
+    // .use(upload.any())
+    .use(express.urlencoded({ extended: false }))
     .use(helmet())
     .use((err: any, req: Request, res: Response, next: NextFunction) => {
       if (req.method === "OPTIONS") {
@@ -58,14 +72,21 @@ const initializeMiddlewares = () => {
       }
 
       return next();
+    })
+    .use(express.json())
+    .use((req: IRequest, res: Response, next: NextFunction) => {
+      v2.config({
+        cloud_name: cloudName,
+        api_key: cloudinaryApiKey,
+        api_secret: cloudinaryApiSecret,
+      });
+
+      next();
     });
 };
 
-import v2Routers from "../components/v1/v1Routes";
-
 const initializeRoutes = () => {
   app.use("/v1", v1Routers);
-  app.use("/v2", v2Routers)
 
   app.get("/", (_req, res) => {
     res.json({ message: "welcome to the Sprinters!" });

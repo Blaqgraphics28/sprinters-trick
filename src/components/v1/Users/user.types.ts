@@ -1,4 +1,13 @@
+import { Types } from "mongoose";
 import platformConstants from "src/configs/platformConstants";
+
+export interface IUser extends Document {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNo: string;
+  role: (typeof platformConstants.userRole)[number];
+}
 
 export interface IGetIntouch extends Document {
   firstName: string;
@@ -6,20 +15,8 @@ export interface IGetIntouch extends Document {
   email: string;
   phoneNo: string;
   message: string;
-  role: (typeof platformConstants.userRole)[number];
 }
 
 export interface INewsletter extends Document {
   email: string;
-}
-
-// blog section made by Okikijesu
-
-export interface IBlog extends Document {
-  postImage: String,
-  about: String,
-  topic: String,
-  post: String,
-  authorImage: String,
-  authorName: String
 }

@@ -7,8 +7,8 @@ const policyMiddleware =
   (schema: Schema, fieldType: "body" | "params" | "query" = "body") =>
   (req: Request, res: Response, next: NextFunction) => {
     try {
-      let parsedData;
 
+      let parsedData;
       if (fieldType === "body") {
         parsedData = schema.parse(req.body);
         req.body = parsedData;

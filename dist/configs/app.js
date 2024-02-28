@@ -1,4 +1,13 @@
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -10,14 +19,25 @@ const _1 = __importDefault(require("."));
 const database_1 = require("./persistence/database");
 const response_1 = require("../utils/response");
 const v1Routes_1 = __importDefault(require("../components/v1/v1Routes"));
+const cloudinary_1 = require("cloudinary");
+const seeder_1 = __importDefault(require("./persistence/seeder"));
 const app = (0, express_1.default)();
-const initializePersistenceAndSeeding = () => {
+const { cloudName, cloudinaryApiKey, cloudinaryApiSecret } = _1.default;
+const initializePersistenceAndSeeding = () => __awaiter(void 0, void 0, void 0, function* () {
     (0, database_1.connectMongoDb)().catch((err) => console.log(err, "error"));
-};
+    yield (0, seeder_1.default)();
+    // await sendMail().then((e) => {
+    //   console.log("e  ", e);
+    // });
+});
 const initializeMiddlewares = () => {
     const allowedOrigins = [
-        `http://localhost:${_1.default.port}`,
-        `http://127.0.0.1:${_1.default.port}`,
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://localhost:3001",
+        "http://127.0.0.1:3001",
+        "https://sprinterstechnologies.com",
+        "https://sprinterz.netlify.app",
     ];
     const corsOptions = {
         origin: function (origin, callback) {
@@ -32,8 +52,8 @@ const initializeMiddlewares = () => {
     };
     app
         .use((0, cors_1.default)(corsOptions))
-        .use(express_1.default.json({ limit: "50kb" }))
-        .use(express_1.default.urlencoded({ limit: "50kb", extended: false }))
+        // .use(upload.any())
+        .use(express_1.default.urlencoded({ extended: false }))
         .use((0, helmet_1.default)())
         .use((err, req, res, next) => {
         if (req.method === "OPTIONS") {
@@ -50,12 +70,21 @@ const initializeMiddlewares = () => {
             });
         }
         return next();
+    })
+        .use(express_1.default.json())
+        .use((req, res, next) => {
+        cloudinary_1.v2.config({
+            cloud_name: cloudName,
+            api_key: cloudinaryApiKey,
+            api_secret: cloudinaryApiSecret,
+        });
+        next();
     });
 };
 const initializeRoutes = () => {
     app.use("/v1", v1Routes_1.default);
     app.get("/", (_req, res) => {
-        res.json({ message: "Up and running in " + _1.default.environment });
+        res.json({ message: "welcome to the Sprinters!" });
     });
     app.all("*", (_req, res) => (0, response_1.handleResponse)({
         res,
