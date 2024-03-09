@@ -29,7 +29,7 @@ const getCaseStudy = async (req: IRequest, res: Response) => {
       });
     }
 
-    caseStudy = await CaseStudyModel.find();
+    caseStudy = await CaseStudyModel.find().sort({ createdAt: -1 });
 
     return handleResponse({
       res,

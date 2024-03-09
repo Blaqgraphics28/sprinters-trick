@@ -30,7 +30,7 @@ const getBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
                 data: { Blog, otherBlogs },
             });
         }
-        Blog = yield blog_model_1.BlogModel.find();
+        Blog = yield blog_model_1.BlogModel.find().sort({ createdAt: -1 });
         return (0, response_1.handleResponse)({
             res,
             message: "success",
