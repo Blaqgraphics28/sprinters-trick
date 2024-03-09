@@ -22,9 +22,9 @@ const createBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             description,
             title,
             destination,
-            image: imageDetails,
+            // image: imageDetails,
             tags,
-            content,
+            // content,
         }).save();
         return (0, response_1.handleResponse)({
             res,

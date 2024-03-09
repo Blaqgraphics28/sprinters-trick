@@ -27,7 +27,7 @@ export const getBlog = async (req: IRequest, res: Response) => {
       });
     }
 
-    Blog = await BlogModel.find();
+    Blog = await BlogModel.find().sort({ createdAt: -1 });
     return handleResponse({
       res,
       message: "success",

@@ -22,6 +22,7 @@ Content-Type: application/json
     "password": "a_Great-experiencE"
 }
 
+
 ### getIntouch
 POST {{api}}/users/get-in-touch
 Content-Type: application/json
@@ -29,7 +30,7 @@ Content-Type: application/json
 {
     "firstName": "Johnni",
     "lastName": "Doree",
-    "email": "poknjgop@email.com",
+e    "email": "poknjgop@email.com",
     "phoneNo": "+2347012898073",
     "message": "Loremy ipseum tfh n"
 }
