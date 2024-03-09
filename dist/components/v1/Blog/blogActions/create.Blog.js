@@ -12,6 +12,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const response_1 = require("../../../../utils/response");
 const blog_model_1 = require("../blog.model");
 const createBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    // const {
+    //   description,
+    //   destination,
+    //   title,
+    //   tags,
+    //   content,
+    //   authorName
+    // }: z.infer<typeof createBlogSchema> = req.body;
     const { description, destination, title, tags, content, authorName } = req.body;
     const { user } = req;
     const { imageDetails } = req;
