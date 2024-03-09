@@ -33,7 +33,7 @@ const getCaseStudy = (req, res) => __awaiter(void 0, void 0, void 0, function* (
                 data: { caseStudy, otherCasestudy },
             });
         }
-        caseStudy = yield caseStudy_model_1.default.find();
+        caseStudy = yield caseStudy_model_1.default.find().sort({ createdAt: -1 });
         return (0, response_1.handleResponse)({
             res,
             message: "Success",
