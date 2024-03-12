@@ -7,15 +7,6 @@ import { handleResponse } from "../../../../utils/response";
 import { BlogModel } from "../blog.model";
 
 const createBlog = async (req: IRequest, res: Response) => {
-  // const {
-  //   description,
-  //   destination,
-  //   title,
-  //   tags,
-  //   content,
-  //   authorName
-  // }: z.infer<typeof createBlogSchema> = req.body;
-
   const {
     description,
     destination,
@@ -23,7 +14,16 @@ const createBlog = async (req: IRequest, res: Response) => {
     tags,
     content,
     authorName
-  } = req.body;
+  }: z.infer<typeof createBlogSchema> = req.body;
+
+  // const {
+  //   description,
+  //   destination,
+  //   title,
+  //   tags,
+  //   content,
+  //   authorName
+  // } = req.body;
 
 
 
@@ -36,9 +36,9 @@ const createBlog = async (req: IRequest, res: Response) => {
       description,
       title,
       destination,
-      // image: imageDetails,
+      image: imageDetails,
       tags,
-      // content,
+      content,
     }).save();
 
     return handleResponse({
