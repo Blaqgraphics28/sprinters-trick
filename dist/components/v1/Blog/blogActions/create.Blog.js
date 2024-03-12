@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const response_1 = require("../../../../utils/response");
 const blog_model_1 = require("../blog.model");
 const createBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { description, destination, title, tags, content, authorName } = req.body;
     // const {
     //   description,
     //   destination,
@@ -19,8 +20,7 @@ const createBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     //   tags,
     //   content,
     //   authorName
-    // }: z.infer<typeof createBlogSchema> = req.body;
-    const { description, destination, title, tags, content, authorName } = req.body;
+    // } = req.body;
     const { user } = req;
     const { imageDetails } = req;
     let Blog;
@@ -30,9 +30,9 @@ const createBlog = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
             description,
             title,
             destination,
-            // image: imageDetails,
+            image: imageDetails,
             tags,
-            // content,
+            content,
         }).save();
         return (0, response_1.handleResponse)({
             res,

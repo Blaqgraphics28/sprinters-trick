@@ -9,7 +9,7 @@ const blogSchema = new mongoose_1.Schema({
     title: String,
     image: { imageId: String, imageUrl: String },
     tags: [String],
-    // content: String,
+    content: String,
     User: { type: mongoose_1.Schema.Types.ObjectId, ref: "User" },
 }, { timestamps: true });
 exports.BlogModel = (0, mongoose_1.model)("Blog", blogSchema);
