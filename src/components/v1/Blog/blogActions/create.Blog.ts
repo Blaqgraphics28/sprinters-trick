@@ -16,17 +16,6 @@ const createBlog = async (req: IRequest, res: Response) => {
     authorName
   }: z.infer<typeof createBlogSchema> = req.body;
 
-  // const {
-  //   description,
-  //   destination,
-  //   title,
-  //   tags,
-  //   content,
-  //   authorName
-  // } = req.body;
-
-
-
   const { user } = req;
   const { imageDetails } = req;
   let Blog;
