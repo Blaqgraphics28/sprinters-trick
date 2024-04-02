@@ -20,7 +20,6 @@ exports.loginSchema = zod_1.z.object({
 });
 const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, password } = req.body;
-    console.log(email, password);
     try {
         const existingUser = yield user_model_1.UserModel.findOne({ email });
         if (!existingUser) {
