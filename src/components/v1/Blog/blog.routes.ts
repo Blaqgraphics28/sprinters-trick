@@ -23,6 +23,7 @@ router.post(
   uploadImageMiddleware,
   createBlog
 );
+
 router.get("/", getBlog);
 router.patch(
   "/update",
@@ -34,6 +35,7 @@ router.patch(
   uploadImageMiddleware,
   editBlog
 );
+
 router.delete(
   "/",
   validateToken,
