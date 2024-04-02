@@ -12,7 +12,6 @@ export const loginSchema = z.object({
 
 const login = async (req: IRequest, res: Response) => {
   const { email, password }: z.infer<typeof loginSchema> = req.body;
-  console.log(email, password)
   try {
 
     const existingUser = await UserModel.findOne({ email });

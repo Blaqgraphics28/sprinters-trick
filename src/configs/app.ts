@@ -31,9 +31,9 @@ const initializeMiddlewares = () => {
     "http://127.0.0.1:3001",
     "https://sprinterstechnologies.com",
     "https://sprinterz.netlify.app",
-    "https://sprinterz.vercel.app"
-  ]
-  
+    "https://sprinterz.vercel.app",
+  ];
+
   const corsOptions = {
     origin: function (
       origin: string | undefined,
