@@ -30,6 +30,7 @@ const initializeMiddlewares = () => {
     "http://localhost:3001",
     "http://127.0.0.1:3001",
     "https://sprinterstechnologies.com",
+    "https://www.sprinterstechnologies.com",
     "https://sprinterz.netlify.app",
     "https://sprinterz.vercel.app",
   ];
