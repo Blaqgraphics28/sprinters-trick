@@ -40,6 +40,7 @@ const initializeMiddlewares = () => {
         "https://www.sprinterstechnologies.com",
         "https://sprinterz.netlify.app",
         "https://sprinterz.vercel.app",
+        "https://www.sprinterstechnologies.com",
     ];
     const corsOptions = {
         origin: function (origin, callback) {
